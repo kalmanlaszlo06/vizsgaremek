@@ -16,21 +16,23 @@
 
         body {
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
             background-color: #151515;
+            text-align: center;
             color: white;
         }
 
         .form-container {
             background-color: #222222;
+            justify-content: center;
+            align-items: center;
             padding: 40px 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             max-width: 400px;
             width: 100%;
-            text-align: center;
+            margin: auto;
+            
         }
 
         .form-container h2 {
@@ -89,7 +91,7 @@
         <input name="email" type="text" placeholder="E-mail cím vagy felhasználó név" required><br>
         <input name="pw" type="password" placeholder="Jelszó" required><br>
         <input type="submit" value="Belépés"><br>
-        <input type="button" value="Regisztráció" onclick="location.href='vizsgaremek.html'"><br>
+        <input type="button" value="Regisztráció" onclick="location.href='./?p=reg'"><br>
     </form>
 </div>
 

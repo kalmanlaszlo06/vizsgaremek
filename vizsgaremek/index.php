@@ -185,8 +185,9 @@
 <div id="login">
     <div id="menu-left">
         <!--bookli ikon!!!-->
-        <a href="./?p="><button>Kezdőlap</button></a> 
-        <div id="genres-dropdown">
+        <a href="./?p="><button>Kezdőlap</button></a>
+        <a href="./?p=konyv_lista"><button>Könyvek</button></a>
+        <!--<div id="genres-dropdown">
             <button id="genres-button">Műfajok</button>
             <div id="genres-content">
                 <a href="./?p=konyv_lista&mufaj=all">Összes műfaj</a>
@@ -195,8 +196,8 @@
                 <a href="./?p=konyv_lista&mufaj=krimi">Krimi</a>
                 <a href="./?p=konyv_lista&mufaj=sci-fi">Sci-fi</a>
             </div>
-        </div>
-
+        </div>-->
+        <!---->
         <form action="./?p=konyv_lista" method="get" id="book-search">
             <input type="hidden" name="p" value="konyv_lista">
             <input type="text" name="kereses" placeholder="Keresés könyv címe szerint...">
@@ -229,7 +230,7 @@
     if (isset($_GET['p'])) $p=$_GET['p']; else $p="";
     if (!isset($_SESSION['uid'])) {
         if ($p == "")                   include("kezdolap.php");
-        else if ($p == "regisztracio")  include("vizsgaremek.html");
+        else if ($p == "reg")           include("regisztracio.php");
         else if ($p == "login")         include("login_form.php");
         else                            include("404_kulso.php");
     } else {
@@ -243,7 +244,7 @@
 ?>
 <iframe name="kisablak"></iframe>
 <footer>
-    <p>&copy; 2024 YourWebsite. Minden jog fenntartva.</p>
+    <p>&copy; 2024 Bookli.hu. Minden jog fenntartva.</p>
 </footer>
 </body>
 </html>

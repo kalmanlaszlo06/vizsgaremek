@@ -10,7 +10,7 @@
 	if( mysqli_num_rows($userek)==0 )
 	{
 	    print "<script> alert('Hibás belépési adatok!') </script>" ;
-		print "<script> parent.location.href='./login_form.php' </script>";
+		print "<script> parent.location.href='./?p=login' </script>";
 	}
 	else
 	{

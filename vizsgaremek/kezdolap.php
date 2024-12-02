@@ -17,7 +17,7 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        #fel{
+        #tartalom{
             text-align: center;
             padding-left: 3rem;
             padding-right: 3rem;
@@ -34,7 +34,7 @@
         transition: background-color 0.3s;
         }
     </style>
-    <div id="fel">
+    <div id="tartalom">
         <h1>Bookli</h1>
         <h4>Álmaid könyvtára</h4>
         <hr>

@@ -16,24 +16,16 @@ if($_POST['email']=="" )
 if($_POST['password']=="" )
     die("<script> alert('Nem adtad meg a jelszavad!') </script>");
 
-if($_POST['telefonszam']=="" )
-    die("<script> alert('Nem adtad meg a telefonszámod!') </script>");
-
-if($_POST['szuldatum']=="" )
-    die("<script> alert('Nem adtad meg a születési dátumod!') </script>");
-
-
     
 
 include("kapcsolat.php");
 
 
-// var_dump($adb);
-//$upw = md5($_POST['password']);
+$upw = md5($_POST['password']);
 
 mysqli_query($adb , "
-INSERT INTO user ( uid,             username,            uemail,          password,          uszuldatum, udatum, uip, usession, ustatusz, ukomment,         ufirstname,                   ulastname) 
-VALUES           (NULL, '$_POST[username]',     '$_POST[email]',            '$_POST[password]', '$_POST[szuldatum]',  NOW(),  '',  '',       '',       '',         '$_POST[keresztnev]',        '$_POST[vezeteknev]')
+INSERT INTO user ( uid, username, uemail, password, uszuldatum, udatum, uip, usession, ustatusz, ukomment, ufirstname, ulastname) 
+VALUES           (NULL, '$_POST[username]', '$_POST[email]', '$upw', '',  NOW(),  '',  '', '', '',  '',  '')
 ");
 
 mysqli_close($adb);
