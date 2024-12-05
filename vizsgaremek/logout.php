@@ -4,6 +4,6 @@
 
     session_destroy() ;
 
-    print "<script> parent.location.href = './kezdolap1.php' </script>" ;
+    print "<script> parent.location.href = './?=' </script>" ;
 
 ?>

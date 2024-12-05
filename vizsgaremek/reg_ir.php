@@ -16,19 +16,16 @@ if($_POST['email']=="" )
 if($_POST['password']=="" )
     die("<script> alert('Nem adtad meg a jelszavad!') </script>");
 
-    
-
 include("kapcsolat.php");
-
 
 $upw = md5($_POST['password']);
 
 mysqli_query($adb , "
 INSERT INTO user ( uid, username, uemail, password, uszuldatum, udatum, uip, usession, ustatusz, ukomment, ufirstname, ulastname) 
-VALUES           (NULL, '$_POST[username]', '$_POST[email]', '$upw', '',  NOW(),  '',  '', '', '',  '',  '')
+VALUES           (NULL, '$_POST[username]', '$_POST[email]', '$upw', '',  NOW(),  '',  '', '', '',  '$_POST[keresztnev]',  '$_POST[vezeteknev]')
 ");
 
 mysqli_close($adb);
 
-print "<script> parent.location.href = './login_form.php' </script>";
+print "<script> parent.location.href = './?p=login' </script>";
 ?>

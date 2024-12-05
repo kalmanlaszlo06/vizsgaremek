@@ -41,7 +41,7 @@
         <p>A Bookli egy online könyvtár ami úttörő ötletekel újitja meg a elavult könyvtári rendszereket és hatalmas tárházával nyujt elképzelhetetlen élményeket</p>
         <br><br><br>
         <?php
-            echo "<input type='button' value='    kezdés    ' onclick='location.href=\"./?p=login\"'>";
+            echo "<input type='button' value='kezdés' onclick='location.href=\"./?p=login\"'>";
         ?>
     </div>
 </body>

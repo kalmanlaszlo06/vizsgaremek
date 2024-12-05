@@ -232,14 +232,14 @@
         if ($p == "")                   include("kezdolap.php");
         else if ($p == "reg")           include("regisztracio.php");
         else if ($p == "login")         include("login_form.php");
-        else                            include("404_kulso.php");
+        else                            include("404.php");
     } else {
         if ($p == "")                       include("belsolap.php");
         else if ($p == "adatlapom")         include("adatlap_form.php");
         else if ($p == "jelszomodositas")   include("jelszomodositas.php");
         else if ($p == "konyv_lista")       include("konyv_lista.php");
         else if ($p == "konyvreszletek")    include("konyv_reszletek.php");
-        else                                include("404_belso.php");
+        else                                include("404.php");
     }
 ?>
 <iframe name="kisablak"></iframe>
