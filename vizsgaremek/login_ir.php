@@ -26,6 +26,6 @@
 
     	mysqli_close( $adb ) ;
 
-    	print "<script> parent.location.href = './' </script>" ;
+    	print "<script> parent.location.href = './?p=konyvek' </script>" ;
 	}
 ?>

@@ -1,5 +1,6 @@
 <?php
     include("kapcsolat.php");
+    $konyvek = mysqli_query($adb , "SELECT * FROM konyvek WHERE statusz = 'a'");
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -62,7 +63,7 @@
         font-size: 13px;
         margin-bottom: 4px;
     }
-    .book-price {
+    .book-subtitle {
         color: #a3e635;
         font-size: 14px;
         font-weight: bold;
@@ -79,23 +80,23 @@
     </form>
     <div class="book-grid">
     <?php
-        $konyvek = mysqli_query($adb , "SELECT * FROM konyvek WHERE statusz = 'a'");
-        $kony = mysqli_fetch_array($konyvek);
-        //print_r($kony);
-        if (count($kony) > 0) {
-            foreach($kony as $value) {
-                // post id és nem tudom hogy hivatkozak a elemekre
-                echo "<a href='./?p=konyvreszletek' style='text-decoration: none; color: inherit;'>";
-                echo "<div class='book-card'>";
-                echo "<img src='" . $value[3] . "' alt='" . $value[2] . "' class='book-cover'>";
-                echo "<div class='book-title'>" . htmlspecialchars($title) . "</div>";
-                echo "<div class='book-author'>" . htmlspecialchars($author) . "</div>";
-                echo "<div class='book-price'>" . htmlspecialchars($price) . " Ft</div>";
-                echo "</div>";
-                echo "</a>";
+        if ($konyvek) {
+            if (mysqli_num_rows($konyvek) > 0) {
+                while ($konyv = mysqli_fetch_array($konyvek, MYSQLI_ASSOC)) {
+                    echo "<a href='./?p=konyvreszletek' style='text-decoration: none; color: inherit;'>";
+                    echo "<div class='book-card'>";
+                    echo "<img src='" . htmlspecialchars($konyv['borito']) . "' alt='" . htmlspecialchars($konyv['kcim']) . "' class='book-cover'>";
+                    echo "<div class='book-title'>" . htmlspecialchars($konyv['kcim']) . "</div>";
+                    echo "<div class='book-author'>" . htmlspecialchars($konyv['iro']) . "</div>";
+                    echo "<div class='book-subtitle'>" . htmlspecialchars($konyv['alcim']) . "</div>";
+                    echo "</div>";
+                    echo "</a>";
+                }
+            }else{
+                echo "nincs találat";
             }
-        } else{
-            echo "nincs találat";
+        } else {
+            echo "valami félre ment az adatbázisban";
         }
         ?>
     </div>

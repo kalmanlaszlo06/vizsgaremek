@@ -186,7 +186,7 @@
     <div id="menu-left">
         <!--bookli ikon!!!-->
         <a href="./?p="><button>Kezdőlap</button></a>
-        <a href="./?p=konyv_lista"><button>Könyvek</button></a>
+        <a href="./?p=konyvek"><button>Könyvek</button></a>
         <!--<div id="genres-dropdown">
             <button id="genres-button">Műfajok</button>
             <div id="genres-content">
@@ -197,12 +197,6 @@
                 <a href="./?p=konyv_lista&mufaj=sci-fi">Sci-fi</a>
             </div>
         </div>-->
-        <!---->
-        <form action="./?p=konyv_lista" method="get" id="book-search">
-            <input type="hidden" name="p" value="konyv_lista">
-            <input type="text" name="kereses" placeholder="Keresés könyv címe szerint...">
-            <input type="submit" value="Keresés">
-        </form>
     </div>
 
     <div id="menu-right">
@@ -214,10 +208,10 @@
             if (!empty($user['uprofkepnev'])) {
                 $profkep = "./profilkepek/" . htmlspecialchars($user['uprofkepnev_eredetinev']);
             } else {
-                $profkep = "./profilkepek/alapprofilkep.jfif";
+                $profkep = "./profilkepek/picon2.png";
             }
 
-            echo "<img src='$profkep' alt='Profilkép'>";
+            echo "<a href='./?p=adatlapom'><img src='$profkep' alt='Profilkép'></a>";
             echo "<a href='./?p=adatlapom'>" . htmlspecialchars($user['username']) . "</a>";
             echo "<input type='button' value='Kilépés' onclick='kisablak.location.href=\"logout.php\"'>";
         } else {
@@ -229,12 +223,15 @@
 <?php
     if (isset($_GET['p'])) $p=$_GET['p']; else $p="";
     if (!isset($_SESSION['uid'])) {
-        if ($p == "")                   include("kezdolap.php");
-        else if ($p == "reg")           include("regisztracio.php");
-        else if ($p == "login")         include("login_form.php");
-        else                            include("404.php");
+        if ($p == "")                       include("kezdolap.php");
+        else if ($p == "reg")               include("regisztracio.php");
+        else if ($p == "login")             include("login_form.php");
+        else if ($p == "konyvek")           include("konyvek.php");
+        else if ($p == "konyvreszletek")    include("konyv_reszletek.php");
+        else                                include("404.php");
     } else {
-        if ($p == "")                       include("belsolap.php");
+        if ($p == "")                       include("kezdolap.php"); // kell-e külön belső kezdő lap?
+        else if ($p == "konyvek")           include("konyvek.php");
         else if ($p == "adatlapom")         include("adatlap_form.php");
         else if ($p == "jelszomodositas")   include("jelszomodositas.php");
         else if ($p == "konyv_lista")       include("konyv_lista.php");
