@@ -21,7 +21,7 @@
     }
     .main-content {
         text-align: center;
-        margin-top: 50px;
+        margin-top: 5px;
         padding: 0 20px;
         flex: 1;
     }
@@ -53,7 +53,7 @@
         border-radius: 4px;
     }
     .book-title {
-        color: #ff6b6b;
+        color: #B21031;
         font-size: 16px;
         margin: 8px 0 4px;
         font-weight: bold;
@@ -64,7 +64,7 @@
         margin-bottom: 4px;
     }
     .book-subtitle {
-        color: #a3e635;
+        color: orange;
         font-size: 14px;
         font-weight: bold;
         margin-top: 6px;
@@ -73,9 +73,10 @@
 </head>
 <body>
 <div class="main-content">
-    <form action="./?p=konyv_lista" method="get" id="book-search">
+    <h2>kereső</h2>
+    <form action="./?p=konyv_lista" method="get" id="book-search"> <!--kövinek csináld meg -->
         <input type="hidden" name="p" value="konyv_lista">
-        <input type="text" name="kereses" placeholder="Keresés könyv címe szerint...">
+        <input type="text" name="kereses" placeholder="pl: cím, szerző ...">
         <input type="submit" value="Keresés">
     </form>
     <div class="book-grid">
@@ -87,7 +88,7 @@
                     echo "<div class='book-card'>";
                     echo "<img src='" . htmlspecialchars($konyv['borito']) . "' alt='" . htmlspecialchars($konyv['kcim']) . "' class='book-cover'>";
                     echo "<div class='book-title'>" . htmlspecialchars($konyv['kcim']) . "</div>";
-                    echo "<div class='book-author'>" . htmlspecialchars($konyv['iro']) . "</div>";
+                    echo "<div class='book-author'>" . ($konyv['iro'] != NULL ? htmlspecialchars($konyv['iro']) : 'nincs') . "</div>";
                     echo "<div class='book-subtitle'>" . htmlspecialchars($konyv['alcim']) . "</div>";
                     echo "</div>";
                     echo "</a>";

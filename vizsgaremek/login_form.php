@@ -86,7 +86,7 @@
 <div class="form-container">
     <h2>Bejelentkezés</h2>
     <form action="login_ir.php" method="post" target="kisablak">
-        <input name="email" type="text" placeholder="E-mail cím vagy felhasználó név" required><br>
+        <input name="email" type="text" placeholder="felhasználó név vagy e-mail cím" required><br>
         <input name="pw" type="password" placeholder="Jelszó" required><br>
         <input type="submit" value="Belépés"><br>
         <input type="button" value="Regisztráció" onclick="location.href='./?p=reg'"><br>
