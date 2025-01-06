@@ -12,12 +12,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
         }
 
@@ -27,6 +24,9 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 300px;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
         }
 
         h1 {
@@ -78,18 +78,12 @@
     <form action="jelszomodositas_ir.php" method="post" target="kisablak">
         <h1>Jelszó Módosítása</h1>
         <div class="form-group">
-            <label for="jelszo">Régi jelszó:</label>
-            <input type="password" name="jelszo" id="jelszo" placeholder="Adja meg a régi jelszót">
+            <label for="pw">Régi jelszó:</label>
+            <input type="password" name="pw" id="pw" placeholder="Adja meg a régi jelszót">
         </div>
-
         <div class="form-group">
-            <label for="ujjelszo">Új jelszó:</label>
-            <input type="password" name="ujjelszo" id="ujjelszo" placeholder="Új jelszó">
-        </div>
-
-        <div class="form-group">
-            <label for="ujjelszo2">Új jelszó még egyszer:</label>
-            <input type="password" name="ujjelszo2" id="ujjelszo2" placeholder="Írja be újra a jelszót">
+            <label for="pw2">Új jelszó:</label>
+            <input type="password" name="pw2" id="pw2" placeholder="Új jelszó">
         </div>
 
         <input type="submit" value="Jelszó módosítása">

@@ -110,17 +110,6 @@
 <body>
     <form action="reg_ir.php" method="post" target="kisablak" id="regisz">
         <label id="cim">Regisztráció</label>
-        
-        <div class="name-container">
-            <div>
-                <label for="keresztnev">Keresztnév:</label>
-                <input type="text" name="keresztnev" id="keresztnev" required>
-            </div>
-            <div>
-                <label for="vezeteknev">Vezetéknév:</label>
-                <input type="text" name="vezeteknev" id="vezeteknev" required>
-            </div>
-        </div>
 
         <label for="username">Felhasználónév:</label>
         <input type="text" name="username" id="username" required>

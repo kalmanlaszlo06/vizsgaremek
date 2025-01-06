@@ -34,24 +34,20 @@
     iframe{
         display:none;
     }
-    /* Header styling */
     #login {
         font-family: Arial, sans-serif; 
         background-color: #333;
         padding: 15px 20px;
         display: flex;
         justify-content: space-between;
-        /* eltávolítottuk az align-items: center; */
         color: #ffffff;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }   
-    /* Left Menu styling */
     #menu-left {
         display: flex;
         align-items: center;
         gap: 15px;
     }   
-    /* Right Menu (User Info) styling */
     #menu-right {
         display: flex;
         align-items: center;
@@ -83,11 +79,9 @@
     #menu-right input[type="button"]:hover {
         background-color: #e0630d;
     }   
-    /* Dropdown styling */
     #genres-dropdown {
         position: relative;
     }   
-    /* Styling for the "Műfajok" button */
     #genres-button {
         background-color: #333;
         color: #fd7015;
@@ -126,7 +120,6 @@
     #genres-dropdown:hover #genres-content {
         display: block;
     }   
-    /* Book Search */
     #book-search input[type="text"] {
         padding: 8px;
         border: 1px solid #333;
@@ -148,7 +141,6 @@
     #book-search input[type="submit"]:hover {
         background-color: #e0630d;
     }   
-    /* Main content styling */
     .main-content {
         text-align: center;
         margin-top: 50px;
@@ -158,13 +150,10 @@
         color: #ff6b6b;
         font-size: 36px;
         margin-bottom: 20px;
-    }   
-    /* Footer styling */
-
+    }
     iframe{
         display:none;
     }   
-    /* Styling for the "Kezdőlap" button */
     #menu-left a button {
         background-color: #333;
         color: #fd7015;
@@ -186,16 +175,7 @@
         <!--bookli ikon!!!-->
         <a href="./?p="><button>Kezdőlap</button></a>
         <a href="./?p=konyvek"><button>Könyvek</button></a>
-        <!--<div id="genres-dropdown">
-            <button id="genres-button">Műfajok</button>
-            <div id="genres-content">
-                <a href="./?p=konyv_lista&mufaj=all">Összes műfaj</a>
-                <a href="./?p=konyv_lista&mufaj=regeny">Regény</a>
-                <a href="./?p=konyv_lista&mufaj=fantasy">Fantasy</a>
-                <a href="./?p=konyv_lista&mufaj=krimi">Krimi</a>
-                <a href="./?p=konyv_lista&mufaj=sci-fi">Sci-fi</a>
-            </div>
-        </div>-->
+        <a href="./?p=konyv_lista"><button>Saját listám</button></a>
     </div>
 
     <div id="menu-right">
@@ -205,7 +185,7 @@
             $user = mysqli_fetch_assoc($userQuery);
 
             if (!empty($user['uprofkepnev'])) {
-                $profkep = "./profilkepek/" . htmlspecialchars($user['uprofkepnev_eredetinev']);
+                $profkep = "./profilkepek/" . htmlspecialchars($user['uprofkepnev']);
             } else {
                 $profkep = "./profilkepek/picon2.png";
             }

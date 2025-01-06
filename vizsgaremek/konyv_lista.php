@@ -1,33 +1,6 @@
 <?php
-// Google Books API kulcs
-$apiKey = 'AIzaSyCp1jq9ZMp5iqoDA1gBrMBJr8d4UNk11gg';
-
-// Paraméterek kezelése
-$mufaj = isset($_GET['mufaj']) ? $_GET['mufaj'] : 'all';
-$kereses = isset($_GET['kereses']) ? $_GET['kereses'] : '';
-
-// Keresési kifejezés generálása
-if ($mufaj !== 'all') {
-    $query = $mufaj;
-    if (!empty($kereses)) {
-        $query .= " " . $kereses;
-    }
-} else {
-    $query = $kereses;
-}
-
-// API URL
-$url = "https://www.googleapis.com/books/v1/volumes?q=" . urlencode($query) . "&key=$apiKey&maxResults=40";
-
-// API válasz lekérése
-$response = file_get_contents($url);
-$data = json_decode($response, true);
-
-// Ellenőrzés
-if (!isset($data['items'])) {
-    echo "<p>Nincs találat a keresésre.</p>";
-    exit;
-}
+include('kapcsolat.php');
+$konyv = mysqli_query($adb,"SELECT * FROM klista WHERE uid ='$_SESSION[uid]'");
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -35,18 +8,19 @@ if (!isset($data['items'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Könyvlista</title>
-    <style>
+<style>
     body {
         font-family: Arial, sans-serif;
         background-color: #1d1f21;
         color: #e0e0e0;
-        padding: 20px;
     }
 
     .book-list {
         display: flex;
         flex-direction: column; /* Oszlopos elrendezés */
         gap: 20px; /* Távolság a könyvek között */
+        padding-right: 20px;
+        padding-left: 20px;
     }
 
     .book-item {
@@ -92,29 +66,30 @@ if (!isset($data['items'])) {
         color: #ff6b6b;
     }
 </style>
-
 </head>
 <body>
 <div class="book-list">
-        <?php foreach ($data['items'] as $index => $item): ?>
-            <?php 
-                $volumeInfo = $item['volumeInfo'];
-                $title = $volumeInfo['title'] ?? 'Cím nem elérhető';
-                $authors = $volumeInfo['authors'] ?? ['Ismeretlen szerző'];
-                $thumbnail = $volumeInfo['imageLinks']['thumbnail'] ?? 'nincs_kep.jpeg';
-            ?>
-            <div class="book-item">
-                <!-- Könyv borító -->
-                <img src="<?php echo htmlspecialchars($thumbnail); ?>" alt="<?php echo htmlspecialchars($title); ?>">
+    <?php
+    if ($konyv != null){
+        if (mysqli_num_rows($konyv) > 0) {
+            while ($konyv = mysqli_fetch_array($konyv, MYSQLI_ASSOC)) {
+                echo'<div class="book-item">';
 
-                <!-- Könyv részletek -->
-                <div class="book-details">
-                    <div class="book-title"><?php echo htmlspecialchars($title); ?></div>
-                    <div class="book-author"><?php echo htmlspecialchars(implode(', ', $authors)); ?></div>
-                    <a href="./?p=konyv_reszletek&id=<?php echo $index; ?>" class="book-link">Részletek</a>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
+                echo'<img src=" '.htmlspecialchars($konyv["borito"]).'" alt ="hiba">';
+
+                echo'<div class="book-details">';
+                echo'    <div class="book-title">'.htmlspecialchars($konyv['kcim']) .'</div>';
+                echo'    <div class="book-author">'. ($konyv['iro'] != NULL ? htmlspecialchars($konyv['iro']) : 'nem ismert/nem talált').'</div>';
+                echo'    <div class="book-score">'. htmlspecialchars().'</div>';
+                echo'</div>';
+                echo'</div>';
+            }
+        }else{
+            echo "nincs találat / nincs még felvéve könyv";
+        }
+    }else{
+        echo "nincs találat / nincs még felvéve könyv";
+    }?>
+</div>
 </body>
 </html>

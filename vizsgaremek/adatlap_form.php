@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adatmódosítás</title>
-    <style>
-        /* Reset and box-sizing */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adatmódosítás</title>
+<style>
         *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* Body styling for centering */
-        body {
+        .relog {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #4a90e2, #2a5470);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            padding: 20px;
-            color: #333;
-        }
-
-        /* Form container styling */
-        form {
             background-color: #ffffff;
-            padding: 20px; /* Reduced padding */
+            padding: 20px; 
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            max-width: 400px; /* Reduced max width for smaller form */
-            width: 90%; /* Make it responsive for smaller screens */
+            max-width: 400px; 
+            width: 90%; 
             text-align: center;
             display: flex;
             flex-direction: column;
             gap: 15px;
             animation: fadeIn 0.8s ease;
+            margin: auto;
         }
 
         @keyframes fadeIn {
@@ -50,15 +37,13 @@
             }
         }
 
-        /* Title styling */
         h2 {
             color: #333;
-            font-size: 22px; /* Slightly smaller font */
+            font-size: 22px; 
             font-weight: 600;
             margin-bottom: 15px;
         }
 
-        /* Label styling */
         label {
             font-size: 13px;
             color: #666;
@@ -67,14 +52,13 @@
             display: block;
         }
 
-        /* Input fields */
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="date"],
-        input[type="file"] {
+        .relog input[type="text"],
+        .relog input[type="email"],
+        .relog input[type="tel"],
+        .relog input[type="date"],
+        .relog input[type="file"] {
             width: 100%;
-            padding: 10px; /* Reduced padding */
+            padding: 10px; 
             border: 1px solid #ccc;
             border-radius: 6px;
             font-size: 14px;
@@ -82,14 +66,12 @@
             transition: border 0.3s, box-shadow 0.3s;
         }
 
-        /* Focus state */
-        input:focus {
+        .relog input:focus {
             border-color: #4a90e2;
             outline: none;
             box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
         }
 
-        /* Flex container for name fields */
         .name-container {
             display: flex;
             gap: 10px;
@@ -100,7 +82,6 @@
             flex: 1;
         }
 
-        /* Profile picture and file selection layout */
         .profile-container {
             display: flex;
             align-items: center;
@@ -110,15 +91,14 @@
         }
 
         .profile-container img {
-            width: 60px; /* Smaller profile image */
+            width: 60px; 
             height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #ddd;
         }
 
-        /* Submit button */
-        input[type="submit"], input[type="button"] {
+        .relog input[type="submit"], input[type="button"] {
             width: 100%;
             padding: 12px;
             border: none;
@@ -131,11 +111,11 @@
             margin-top: 8px;
         }
 
-        input[type="submit"] {
+        .relog input[type="submit"] {
             background-color: #4a90e2;
         }
 
-        input[type="submit"]:hover {
+        .relog input[type="submit"]:hover {
             background-color: #357ab7;
             transform: translateY(-2px);
         }
@@ -149,7 +129,6 @@
             transform: translateY(-2px);
         }
 
-        /* Responsive adjustments */
         @media (max-width: 480px) {
             form {
                 padding: 15px;
@@ -158,19 +137,18 @@
                 flex-direction: column;
             }
         }
-    </style>
+</style>
 </head>
 <body>
     <?php
     include("kapcsolat.php");
     $user = mysqli_fetch_array(mysqli_query($adb,"SELECT * FROM user WHERE uid ='$_SESSION[uid]'"));
-    $profkep = !empty($user['uprofkepnev_eredetinev']) ? "./profilkepek/" . $user['uprofkepnev_eredetinev'] : "./profilkepek/alapprofilkep.jfif";
+    $profkep = !empty($user['uprofkepnev_eredetinev']) ? "./profilkepek/" . $user['uprofkepnev_eredetinev'] : "./profilkepek/picon2.png";
     ?>
 
     <form action='adatlap_ir.php' method='post' target='kisablak' class='relog' enctype='multipart/form-data'>
         <h2>Adatok Módosítása</h2>
         
-        <!-- Profile Picture and File Selection -->
         <div class="profile-container">
             <img src="<?= htmlspecialchars($profkep); ?>" alt="Profilkép">
             <div>
@@ -178,40 +156,13 @@
                 <input type="file" name="profkep" id="profkep">
             </div>
         </div>
-
-        <div class="name-container">
-            <div>
-                <label for="keresztnev">Keresztnév:</label>
-                <input type="text" name="keresztnev" id="keresztnev" value="<?= htmlspecialchars($user['ufirstname']); ?>" >
-            </div>
-            <div>
-                <label for="vezeteknev">Vezetéknév:</label>
-                <input type="text" name="vezeteknev" id="vezeteknev" value="<?= htmlspecialchars($user['ulastname']); ?>">
-            </div>
-        </div>
-
-        <label for="szuldatum">Születési dátum:</label>
-        <input type="date" name="szuldatum" id="szuldatum" value="<?= htmlspecialchars($user['uszuldatum']); ?>">
-
         <label for="username">Felhasználónév:</label>
         <input type="text" name="username" id="username" value="<?= htmlspecialchars($user['username']); ?>">
-
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['uemail']); ?>">
-
         <input type="submit" value="Adatok módosítása">
-
-        <!-- Button to open the password modification page -->
-        <input type="button" id="jmodositas" name="jmodositas" value="Jelszó módosítása" onclick="openPasswordChange()">
-
-        <input type="hidden" name="uid" value="<?= htmlspecialchars($user['uid']); ?>">
+        <a href="./?p=jelszomodositas"><input type="button" id="jmodositas" name="jmodositas" value="Jelszó módosítása"></a>
+        <input type="hidden" name="uid" id="uid" value="<?= htmlspecialchars($user['uid']); ?>">
     </form>
-
-    <script>
-        // JavaScript function to open the password modification page
-        function openPasswordChange() {
-            window.location.href = 'jelszomodositas.php';
-        }
-    </script>
 </body>
 </html>
