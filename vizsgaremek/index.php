@@ -9,15 +9,17 @@
     mysqli_query($adb, 
     " INSERT INTO naplo (nid, ndate, nip, nsession, nuid, nurl) 
     VALUES (NULL, NOW(), '$ip', '$sess', '$uid', '$url')");
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Főoldal</title>
-    <style>
-        body {
+</head>
+<body>
+<style>
+     body {
             font-family: Arial, sans-serif;
             background-color: #1d1f21;
             color: #e0e0e0;
@@ -27,128 +29,13 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        
-    </style>
-</head>
-<body>
-<style>
     iframe{
         display:none;
     }
-    /* Header styling */
-    #login {
-        font-family: Arial, sans-serif; 
-        background-color: #333;
-        padding: 15px 20px;
-        display: flex;
-        justify-content: space-between;
-        /* eltávolítottuk az align-items: center; */
-        color: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    }   
-    /* Left Menu styling */
-    #menu-left {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }   
-    /* Right Menu (User Info) styling */
-    #menu-right {
-        display: flex;
-        align-items: center;
-    }   
-    #menu-right img {
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        margin-right: 10px;
-    }   
-    #menu-right a {
-        color: #fd7015;
-        text-decoration: none;
-        font-weight: bold;
-        margin-left: 15px;
-        font-size: 16px;
-    }   
-    #menu-right input[type="button"] {
-        background-color: #fd7015;
-        color: #fff;
-        border: none;
-        padding: 8px 15px;
-        cursor: pointer;
-        border-radius: 5px;
-        font-size: 15px;
-        margin-left: 10px;
-        transition: background-color 0.3s;
-    }   
-    #menu-right input[type="button"]:hover {
-        background-color: #e0630d;
-    }   
-    /* Dropdown styling */
-    #genres-dropdown {
-        position: relative;
-    }   
-    /* Styling for the "Műfajok" button */
-    #genres-button {
-        background-color: #333;
-        color: #fd7015;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 15px;
-        transition: background-color 0.3s, color 0.3s;
-    }   
-    #genres-button:hover {
-        background-color: #444;
-        color: #ffffff;
-    }   
-    #genres-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #333;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        border-radius: 5px;
-        z-index: 1;
-        min-width: 150px;
-    }   
-    #genres-content a {
-        display: block;
-        color: #fd7015;
-        padding: 10px 15px;
-        text-decoration: none;
-        font-size: 14px;
-    }   
-    #genres-content a:hover {
-        background-color: #444;
-    }   
-    #genres-dropdown:hover #genres-content {
-        display: block;
-    }   
-    /* Book Search */
-    #book-search input[type="text"] {
-        padding: 8px;
-        border: 1px solid #333;
-        border-radius: 5px;
-        background-color: #222;
-        color: #f1f1f1;
-        outline: none;
-    }   
-    #book-search input[type="submit"] {
-        background-color: #fd7015;
-        color: #fff;
-        border: none;
-        padding: 8px 15px;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-left: 5px;
-        transition: background-color 0.3s;
-    }   
-    #book-search input[type="submit"]:hover {
-        background-color: #e0630d;
-    }   
+    footer{
+        text-align:center;
+    }
+
     /* Main content styling */
     .main-content {
         text-align: center;
@@ -160,76 +47,123 @@
         font-size: 36px;
         margin-bottom: 20px;
     }   
-    /* Footer styling */
-
-    iframe{
-        display:none;
-    }   
-    /* Styling for the "Kezdőlap" button */
-    #menu-left a button {
-        background-color: #333;
-        color: #fd7015;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 5px;
+    .support-tab {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #ff6b6b;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
         cursor: pointer;
-        font-size: 15px;
-        transition: background-color 0.3s, color 0.3s;
-    }   
-    #menu-left a button:hover {
-        background-color: #444;
-        color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+        font-weight: bold;
+        z-index: 1000;
+    }
+
+    /* Popup ablak */
+    .support-popup {
+        display: none;
+        position: fixed;
+        bottom: 70px;
+        right: 20px;
+        width: 300px;
+        background-color: #2c2f33;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        z-index: 1001;
+    }
+
+    .support-popup textarea {
+        width: 100%;
+        height: 80px;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 14px;
+        resize: none;
+    }
+
+    .support-popup button {
+        background-color: #ff6b6b;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-top: 10px;
+        float: right;
     }
 </style>
 <body>
-<div id="login">
-    <div id="menu-left">
-        <!--bookli ikon!!!-->
-        <a href="./?p="><button>Kezdőlap</button></a>
-        <a href="./?p=konyv_lista"><button>Könyvek</button></a>
-        <!--<div id="genres-dropdown">
-            <button id="genres-button">Műfajok</button>
-            <div id="genres-content">
-                <a href="./?p=konyv_lista&mufaj=all">Összes műfaj</a>
-                <a href="./?p=konyv_lista&mufaj=regeny">Regény</a>
-                <a href="./?p=konyv_lista&mufaj=fantasy">Fantasy</a>
-                <a href="./?p=konyv_lista&mufaj=krimi">Krimi</a>
-                <a href="./?p=konyv_lista&mufaj=sci-fi">Sci-fi</a>
-            </div>
-        </div>-->
-        <!---->
-        <form action="./?p=konyv_lista" method="get" id="book-search">
-            <input type="hidden" name="p" value="konyv_lista">
-            <input type="text" name="kereses" placeholder="Keresés könyv címe szerint...">
-            <input type="submit" value="Keresés">
-        </form>
-    </div>
-
-    <div id="menu-right">
-        <?php
-        if (isset($_SESSION['uid'])) {
-            $userQuery = mysqli_query($adb, "SELECT * FROM user WHERE uid='$_SESSION[uid]'");
-            $user = mysqli_fetch_assoc($userQuery);
-
-            if (!empty($user['uprofkepnev'])) {
-                $profkep = "./profilkepek/" . htmlspecialchars($user['uprofkepnev_eredetinev']);
-            } else {
-                $profkep = "./profilkepek/alapprofilkep.jfif";
-            }
-
-            echo "<img src='$profkep' alt='Profilkép'>";
-            echo "<a href='./?p=adatlapom'>" . htmlspecialchars($user['username']) . "</a>";
-            echo "<input type='button' value='Kilépés' onclick='kisablak.location.href=\"logout.php\"'>";
-        } else {
-            echo "<input type='button' value='Belépés' onclick='location.href=\"./?p=login\"'>";
-        }
-        ?>
-    </div>
+<div class="support-tab" onclick="toggleSupportPopup()">💬 Support</div>
+<div class="support-popup" id="supportPopup">
+    <textarea id="supportMessage" placeholder="Írja le a kérdését..."></textarea>
+    <button onclick="sendSupportMessage()">Küldés</button>
 </div>
+<script>
+    function toggleSupportPopup() {
+        const popup = document.getElementById('supportPopup');
+        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function sendSupportMessage() {
+        const message = document.getElementById('supportMessage').value;
+        if (message.trim() === '') {
+            alert('Kérjük, írja be a kérdését!');
+            return;
+        }
+
+        // AJAX kérés küldése a PHP backendhez
+        fetch('support_handler.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sszoveg: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('A kérdése sikeresen elküldve!');
+                document.getElementById('supportMessage').value = '';
+                toggleSupportPopup();
+            } else {
+                alert('Hiba történt az üzenet elküldésekor.');
+            }
+        })
+        .catch(err => console.error(err));
+    }
+
+    // Üzenetek frissítése
+    function fetchMessages() {
+        fetch('fetch_messages.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.messages && data.messages.length > 0) {
+                    const messageContainer = document.getElementById('messages');
+                    messageContainer.innerHTML = ''; // Az eddigi üzenetek törlése
+                    data.messages.forEach(message => {
+                        const messageElement = document.createElement('div');
+                        messageElement.className = 'message';
+                        messageElement.textContent = message.sszoveg + ' - ' + message.username;
+                        messageContainer.appendChild(messageElement);
+                    });
+                }
+            })
+            .catch(err => console.error('Hiba történt az üzenetek lekérésekor:', err));
+    }
+
+    // Polling (5 másodpercenként)
+    setInterval(fetchMessages, 5000);
+
+
+</script>
 <?php
     if (isset($_GET['p'])) $p=$_GET['p']; else $p="";
     if (!isset($_SESSION['uid'])) {
-        if ($p == "")                   include("kezdolap.php");
+        if ($p == "")                   include("kezdolap1.php");
         else if ($p == "reg")           include("regisztracio.php");
         else if ($p == "login")         include("login_form.php");
         else                            include("404.php");
@@ -239,6 +173,8 @@
         else if ($p == "jelszomodositas")   include("jelszomodositas.php");
         else if ($p == "konyv_lista")       include("konyv_lista.php");
         else if ($p == "konyvreszletek")    include("konyv_reszletek.php");
+        else if ($p == "kedvencek")         include("kedvencek.php");
+        else if ($p == "kosar")             include("kosar.php");
         else                                include("404.php");
     }
 ?>
@@ -248,6 +184,3 @@
 </footer>
 </body>
 </html>
-
-
-    

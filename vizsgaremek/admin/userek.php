@@ -1,6 +1,6 @@
 <?php
 // Adatbázis kapcsolat
-$adb = mysqli_connect( "localhost", "root", "", "kl_registration" );
+$adb = mysqli_connect("localhost", "root", "", "kl_registration");
 
 // Felhasználói adatok lekérdezése
 $query = "SELECT * FROM user";
@@ -19,7 +19,6 @@ if (!$result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Felhasználók</title>
     <style>
-        /* Táblázat stílus */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -42,7 +41,7 @@ if (!$result) {
         tr:hover {
             background-color: #ddd;
         }
-        h1{
+        h1 {
             text-align: center;
         }
     </style>
@@ -59,21 +58,39 @@ if (!$result) {
                 <th>Születési dátum</th>
                 <th>Vezetéknév</th>
                 <th>Keresztnév</th>
+                <th>Komment hozzáadása</th>
+                <th>Törlés</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            // Felhasználók adatainak kiírása
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . htmlspecialchars($row['uid']) . "</td>";
-                // Link a felhasználó adatlapjára
                 echo "<td><a href='adatlap_form1.php?uid=" . urlencode($row['uid']) . "'>" . htmlspecialchars($row['username']) . "</a></td>";
                 echo "<td>" . htmlspecialchars($row['uemail']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['udatum']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['uszuldatum']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['ufirstname']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['ulastname']) . "</td>";
+
+                // Komment hozzáadása
+                echo "<td>
+                    <form method='POST' action='admin_komment.php'>
+                        <input type='hidden' name='uid' value='" . htmlspecialchars($row['uid']) . "'>
+                        <input type='text' name='ukomment' placeholder='Írj kommentet'>
+                        <button type='submit'>Hozzáadás</button>
+                    </form>
+                </td>";
+
+                // Felhasználó törlése
+                echo "<td>
+                    <form method='POST' action='admin_delete_user.php'>
+                        <input type='hidden' name='uid' value='" . htmlspecialchars($row['uid']) . "'>
+                        <button type='submit' onclick='return confirm(\"Biztosan törölni akarod?\")'>Törlés</button>
+                    </form>
+                </td>";
+
                 echo "</tr>";
             }
             ?>

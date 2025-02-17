@@ -1,199 +1,46 @@
-
-
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
-    
-
-<style>
-    /* Header styling */
-    #login {
-        font-family: Arial, sans-serif; 
-        background-color: #333;
-        padding: 15px 20px;
-        display: flex;
-        justify-content: space-between;
-        /* eltávolítottuk az align-items: center; */
-        color: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Left Menu styling */
-    #menu-left {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    /* Right Menu (User Info) styling */
-    #menu-right {
-        display: flex;
-        align-items: center;
-    }
-
-    #menu-right img {
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        margin-right: 10px;
-    }
-
-    #menu-right a {
-        color: #fd7015;
-        text-decoration: none;
-        font-weight: bold;
-        margin-left: 15px;
-        font-size: 16px;
-    }
-
-    #menu-right input[type="button"] {
-        background-color: #fd7015;
-        color: #fff;
-        border: none;
-        padding: 8px 15px;
-        cursor: pointer;
-        border-radius: 5px;
-        font-size: 15px;
-        margin-left: 10px;
-        transition: background-color 0.3s;
-    }
-
-    #menu-right input[type="button"]:hover {
-        background-color: #e0630d;
-    }
-
-    /* Dropdown styling */
-    #genres-dropdown {
-        position: relative;
-    }
-
-    /* Styling for the "Műfajok" button */
-    #genres-button {
-        background-color: #333;
-        color: #fd7015;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 15px;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    #genres-button:hover {
-        background-color: #444;
-        color: #ffffff;
-    }
-
-    #genres-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #333;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        border-radius: 5px;
-        z-index: 1;
-        min-width: 150px;
-    }
-
-    #genres-content a {
-        display: block;
-        color: #fd7015;
-        padding: 10px 15px;
-        text-decoration: none;
-        font-size: 14px;
-    }
-
-    #genres-content a:hover {
-        background-color: #444;
-    }
-
-    #genres-dropdown:hover #genres-content {
-        display: block;
-    }
-
-    /* Book Search */
-    #book-search input[type="text"] {
-        padding: 8px;
-        border: 1px solid #333;
-        border-radius: 5px;
-        background-color: #222;
-        color: #f1f1f1;
-        outline: none;
-    }
-
-    #book-search input[type="submit"] {
-        background-color: #fd7015;
-        color: #fff;
-        border: none;
-        padding: 8px 15px;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-left: 5px;
-        transition: background-color 0.3s;
-    }
-
-    #book-search input[type="submit"]:hover {
-        background-color: #e0630d;
-    }
-
-    /* Main content styling */
-    .main-content {
-        text-align: center;
-        margin-top: 50px;
-        flex: 1;
-    }
-
-    h1 {
-        color: #ff6b6b;
-        font-size: 36px;
-        margin-bottom: 20px;
-    }
-
-    /* Footer styling */
-    
-
-    iframe{
-        display:none;
-    }
-
-    /* Styling for the "Kezdőlap" button */
-    #menu-left a button {
-        background-color: #333;
-        color: #fd7015;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 15px;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    #menu-left a button:hover {
-        background-color: #444;
-        color: #ffffff;
-    }
-
-</style>
 
 <body>
 <div id="login">
     <div id="menu-left">
         <a href="./?p="><button>Kezdőlap</button></a> 
         <div id="genres-dropdown">
-            <button id="genres-button">Műfajok</button>
-            <div id="genres-content">
-                <a href="./?p=konyv_lista&mufaj=all">Összes műfaj</a>
-                <a href="./?p=konyv_lista&mufaj=regeny">Regény</a>
-                <a href="./?p=konyv_lista&mufaj=fantasy">Fantasy</a>
-                <a href="./?p=konyv_lista&mufaj=krimi">Krimi</a>
-                <a href="./?p=konyv_lista&mufaj=sci-fi">Sci-fi</a>
-            </div>
+    <button id="genres-button">Műfajok</button>
+    <div id="genres-content">
+        <div class="genres-section">
+            <h3>Ajánlott</h3>
+            <a href="./?p=konyv_lista&mufaj=ajanlott">2024 Top 10</a>
+            <a href="./?p=konyv_lista&mufaj=2025">2025</a>
+        </div>
+        <div class="genres-section">
+            <h3>Legnépszerűbb</h3>
+            <a href="./?p=konyv_lista&mufaj=regeny">Regény</a>
+            <a href="./?p=konyv_lista&mufaj=fantasy">Fantasy</a>
+            <a href="./?p=konyv_lista&mufaj=krimi">Krimi</a>
+            <a href="./?p=konyv_lista&mufaj=sci-fi">Sci-fi</a>
+        </div>
+        <div class="genres-section">
+            <h3>Egyéb</h3>
+            <a href="./?p=konyv_lista&mufaj=konyv_klub">Könyv Klub</a>
+            <a href="./?p=konyv_lista&mufaj=ajanlottak">Ajánlottak</a>
+        </div>
+    </div>
+</div>
+
+        <div id="favorites">
+            <a href="./?p=kedvencek" title="Kedvencek">
+                <span id="favorites-icon">❤️</span>
+            </a>
         </div>
 
         <form action="./?p=konyv_lista" method="get" id="book-search">
@@ -204,25 +51,107 @@
     </div>
 
     <div id="menu-right">
-        <?php
-        if (isset($_SESSION['uid'])) {
-            $userQuery = mysqli_query($adb, "SELECT * FROM user WHERE uid='$_SESSION[uid]'");
-            $user = mysqli_fetch_assoc($userQuery);
+        <div id="cart-container" style="position: relative;">
+            <div id="cart-icon" style="cursor: pointer; position: relative;">
+                <button id="kosarbutton" onclick="location.href='./?p=kosar'">🛒 <span id="cart-count">0</span> </button>
+            </div>
+            <div id="cart-dropdown" style="position: absolute; top: 25px; right: 0; display: none; background: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 10px; width: 300px; border-radius: 8px;">
+                <p style="color:black;"><strong>Kosár tartalma:</strong></p>
+                <div id="cart-items" style="max-height: 200px; overflow-y: auto;">
+                    <!-- Kosár elemek itt fognak megjelenni -->
+                </div>
+                <button id="kosarbutton" onclick="location.href='./?p=kosar'">Kosár megtekintése</button>
+            </div>
+        </div>
 
-            if (!empty($user['uprofkepnev'])) {
-                $profkep = "./profilkepek/" . htmlspecialchars($user['uprofkepnev_eredetinev']);
-            } else {
-                $profkep = "./profilkepek/alapprofilkep.jfif";
+    <script>
+    // Kosár ikon hover eseménye
+    document.getElementById('cart-icon').addEventListener('mouseenter', function() {
+        document.getElementById('cart-dropdown').style.display = 'block'; // Kosár megjelenítése
+        loadCartItems(); // Kosár elemek betöltése
+    });
+
+    // Kosár tartalom hover eseménye, hogy ne tűnjön el gyorsan
+    document.getElementById('cart-dropdown').addEventListener('mouseenter', function() {
+        this.style.display = 'block'; // Kosár tartalom megjelenítése
+    });
+
+    // Kosár ikon eltűnése, ha az egér elhagyja az ikont és nem a tartalom fölött van
+    document.getElementById('cart-icon').addEventListener('mouseleave', function() {
+        setTimeout(function() {
+            if (!document.getElementById('cart-dropdown').matches(':hover')) {
+                document.getElementById('cart-dropdown').style.display = 'none'; // Kosár eltűnése
             }
+        }, 200); // Kis késleltetés hozzáadása
+    });
 
-            echo "<img src='$profkep' alt='Profilkép'>";
-            echo "<a href='./?p=adatlapom'>" . htmlspecialchars($user['username']) . "</a>";
-            echo "<input type='button' value='Kilépés' onclick='kisablak.location.href=\"logout.php\"'>";
+    // Kosár tartalom eltűnése, ha az egér elhagyja a tartalmat
+    document.getElementById('cart-dropdown').addEventListener('mouseleave', function() {
+        this.style.display = 'none'; // Kosár eltűnése
+    });
+
+    // Kosár elemek betöltése
+    function loadCartItems() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'load_cart.php', true); // Kosár elemek lekérése egy külön fájlból (load_cart.php)
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                document.getElementById('cart-items').innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+
+    function updateCartCount() {
+        fetch('cart_count.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('cart-count').textContent = data.cartCount;
+                } else {
+                    console.error('Hiba a kosár számának lekérésekor:', data.message);
+                }
+            })
+            .catch(error => console.error('Hálózati hiba:', error));
+    }
+});
+
+    </script>
+
+    <?php
+    if (isset($_SESSION['uid'])) {
+        $userQuery = mysqli_query($adb, "SELECT * FROM user WHERE uid='$_SESSION[uid]'");
+        $user = mysqli_fetch_assoc($userQuery);
+
+        if (!empty($user['uprofkepnev'])) {
+            $profkep = "./profilkepek/" . htmlspecialchars($user['uprofkepnev_eredetinev']);
         } else {
-            echo "<input type='button' value='Belépés' onclick='location.href=\"./?p=login\"'>";
+            $profkep = "./profilkepek/alapprofilkep.jfif";
         }
-        ?>
-    </div>
+
+        // Kosárban lévő könyvek számának lekérdezése
+        $cartCountQuery = mysqli_query($adb, "SELECT COUNT(*) AS cart_count FROM kosar WHERE uid='$_SESSION[uid]'");
+        $cartCount = mysqli_fetch_assoc($cartCountQuery)['cart_count'] ?? 0;
+
+        echo "<div id='profile-container'>";
+        echo "    <img src='$profkep' alt='Profilkép'>";
+        echo "    <span>" . htmlspecialchars($user['username']) . "</span>";
+        echo "    <div id='dropdown-arrow'>▼</div>";
+        echo "    <div id='profile-menu'>";
+        echo "        <a href='./?p=adatlapom'>Profil szerkesztése</a>";
+        echo "        <a href='logout.php' target='kisablak'>Kijelentkezés</a>";
+        echo "    </div>";
+        echo "</div>";
+
+    } else {
+        echo "<input type='button' value='Belépés' onclick='location.href=\"./?p=login\"'>";
+    }
+    ?>
+</div>
+
 </div>
 </body>
 </html>

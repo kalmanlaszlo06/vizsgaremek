@@ -28,9 +28,9 @@
         <h2>Bookly</h2>
         <p>Ahol minden könyvet megtalálsz ;)
         </p>
-        <a href="./vizsgaremek.html">REGISZTRÁCIÓ</a>
+        <a href="./?p=reg">REGISZTRÁCIÓ</a>
         <p id="vanmar" >Van már fiókod?</p>
-        <a href="./login_form.php">BEJELENTKEZÉS</a>
+        <a href="./?p=login">BEJELENTKEZÉS</a>
       </div>
       <img src="https://d1yei2z3i6k35z.cloudfront.net/505757/63fa590e96084_5x8inch-2.png" class="product_img">
     </div>

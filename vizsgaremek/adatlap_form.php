@@ -5,134 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adatmódosítás</title>
     <style>
-        /* Reset and box-sizing */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Body styling for centering */
+        /* Belsolap stílusok */
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #4a90e2, #2a5470);
+            background-color: #1d1f21;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            padding: 20px;
-            color: #333;
+            min-height: 100vh;
         }
 
-        /* Form container styling */
         form {
-            background-color: #ffffff;
-            padding: 20px; /* Reduced padding */
+            background-color: #2a2c2f;
+            padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            max-width: 400px; /* Reduced max width for smaller form */
-            width: 90%; /* Make it responsive for smaller screens */
-            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            animation: fadeIn 0.8s ease;
+            text-align: center;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Title styling */
         h2 {
-            color: #333;
-            font-size: 22px; /* Slightly smaller font */
-            font-weight: 600;
+            color: #ff6b6b;
+            font-size: 22px;
+            font-weight: bold;
             margin-bottom: 15px;
         }
 
-        /* Label styling */
         label {
-            font-size: 13px;
-            color: #666;
+            font-size: 14px;
+            color: #fd7015;
             margin-bottom: 5px;
             text-align: left;
             display: block;
         }
 
-        /* Input fields */
         input[type="text"],
         input[type="email"],
         input[type="tel"],
         input[type="date"],
         input[type="file"] {
             width: 100%;
-            padding: 10px; /* Reduced padding */
-            border: 1px solid #ccc;
+            padding: 10px;
+            border: 1px solid #444;
             border-radius: 6px;
+            background-color: #1d1f21;
+            color: #e0e0e0;
             font-size: 14px;
-            color: #333;
-            transition: border 0.3s, box-shadow 0.3s;
         }
 
-        /* Focus state */
         input:focus {
             border-color: #4a90e2;
             outline: none;
             box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
         }
 
-        /* Flex container for name fields */
-        .name-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 1rem;
-        }
-
-        .name-container div {
-            flex: 1;
-        }
-
-        /* Profile picture and file selection layout */
         .profile-container {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 15px;
-            text-align: left;
         }
 
         .profile-container img {
-            width: 60px; /* Smaller profile image */
+            width: 60px;
             height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #ddd;
         }
 
-        /* Submit button */
         input[type="submit"], input[type="button"] {
-            width: 100%;
             padding: 12px;
             border: none;
             border-radius: 6px;
-            color: white;
             font-size: 15px;
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
-            margin-top: 8px;
         }
 
         input[type="submit"] {
             background-color: #4a90e2;
+            color: white;
         }
 
         input[type="submit"]:hover {
@@ -141,36 +101,26 @@
         }
 
         #jmodositas {
-            background-color: #ff7675;
+            background-color: #ff6b6b;
+            color: white;
         }
 
         #jmodositas:hover {
-            background-color: #d65c5c;
+            background-color: #e63946;
             transform: translateY(-2px);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            form {
-                padding: 15px;
-            }
-            .name-container {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
 <body>
     <?php
     include("kapcsolat.php");
-    $user = mysqli_fetch_array(mysqli_query($adb,"SELECT * FROM user WHERE uid ='$_SESSION[uid]'"));
+    $user = mysqli_fetch_array(mysqli_query($adb, "SELECT * FROM user WHERE uid ='$_SESSION[uid]'"));
     $profkep = !empty($user['uprofkepnev_eredetinev']) ? "./profilkepek/" . $user['uprofkepnev_eredetinev'] : "./profilkepek/alapprofilkep.jfif";
     ?>
 
-    <form action='adatlap_ir.php' method='post' target='kisablak' class='relog' enctype='multipart/form-data'>
+    <form action='adatlap_ir.php' method='post' target='kisablak' enctype='multipart/form-data'>
         <h2>Adatok Módosítása</h2>
         
-        <!-- Profile Picture and File Selection -->
         <div class="profile-container">
             <img src="<?= htmlspecialchars($profkep); ?>" alt="Profilkép">
             <div>
@@ -179,16 +129,11 @@
             </div>
         </div>
 
-        <div class="name-container">
-            <div>
-                <label for="keresztnev">Keresztnév:</label>
-                <input type="text" name="keresztnev" id="keresztnev" value="<?= htmlspecialchars($user['ufirstname']); ?>" >
-            </div>
-            <div>
-                <label for="vezeteknev">Vezetéknév:</label>
-                <input type="text" name="vezeteknev" id="vezeteknev" value="<?= htmlspecialchars($user['ulastname']); ?>">
-            </div>
-        </div>
+        <label for="keresztnev">Keresztnév:</label>
+        <input type="text" name="keresztnev" id="keresztnev" value="<?= htmlspecialchars($user['ufirstname']); ?>">
+
+        <label for="vezeteknev">Vezetéknév:</label>
+        <input type="text" name="vezeteknev" id="vezeteknev" value="<?= htmlspecialchars($user['ulastname']); ?>">
 
         <label for="szuldatum">Születési dátum:</label>
         <input type="date" name="szuldatum" id="szuldatum" value="<?= htmlspecialchars($user['uszuldatum']); ?>">
@@ -200,15 +145,11 @@
         <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['uemail']); ?>">
 
         <input type="submit" value="Adatok módosítása">
-
-        <!-- Button to open the password modification page -->
         <input type="button" id="jmodositas" name="jmodositas" value="Jelszó módosítása" onclick="openPasswordChange()">
-
         <input type="hidden" name="uid" value="<?= htmlspecialchars($user['uid']); ?>">
     </form>
 
     <script>
-        // JavaScript function to open the password modification page
         function openPasswordChange() {
             window.location.href = 'jelszomodositas.php';
         }

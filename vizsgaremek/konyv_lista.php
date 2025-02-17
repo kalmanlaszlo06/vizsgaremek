@@ -1,3 +1,6 @@
+<?php 
+include("header.php");
+?>
 <?php
 // Google Books API kulcs
 $apiKey = 'AIzaSyCp1jq9ZMp5iqoDA1gBrMBJr8d4UNk11gg';
@@ -28,6 +31,7 @@ if (!isset($data['items'])) {
     echo "<p>Nincs találat a keresésre.</p>";
     exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -36,17 +40,15 @@ if (!isset($data['items'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Könyvlista</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #1d1f21;
-        color: #e0e0e0;
-        padding: 20px;
-    }
 
     .book-list {
         display: flex;
         flex-direction: column; /* Oszlopos elrendezés */
         gap: 20px; /* Távolság a könyvek között */
+        font-family: Arial, sans-serif;
+        background-color: #1d1f21;
+        color: #e0e0e0;
+        padding: 20px;
     }
 
     .book-item {
@@ -98,6 +100,7 @@ if (!isset($data['items'])) {
 <div class="book-list">
         <?php foreach ($data['items'] as $index => $item): ?>
             <?php 
+                $id = $item['id'];
                 $volumeInfo = $item['volumeInfo'];
                 $title = $volumeInfo['title'] ?? 'Cím nem elérhető';
                 $authors = $volumeInfo['authors'] ?? ['Ismeretlen szerző'];
@@ -111,7 +114,7 @@ if (!isset($data['items'])) {
                 <div class="book-details">
                     <div class="book-title"><?php echo htmlspecialchars($title); ?></div>
                     <div class="book-author"><?php echo htmlspecialchars(implode(', ', $authors)); ?></div>
-                    <a href="./?p=konyv_reszletek&id=<?php echo $index; ?>" class="book-link">Részletek</a>
+                    <a href="./?p=konyvreszletek&id=<?php echo $id; ?>" class="book-link">Részletek</a>
                 </div>
             </div>
         <?php endforeach; ?>

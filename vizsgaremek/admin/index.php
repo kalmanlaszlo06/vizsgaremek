@@ -37,9 +37,9 @@
     <div id="menu" >
     <a href="../">Kezdőlap</a>
     <a href="./?p=userek">Userek, belépések</a>
-    <a href="../?p=kerdesek">Kérdések</a>
-    <a href="../?p=ertekelesek">Szerkesztés</a>
-    <a href="../?p=ertekelesek">Értékelések, Válaszok</a>
+    <a href="./?p=kerdesek">Kérdések</a>
+    <a href="./?p=asd">Szerkesztés</a>
+    <a href="./?p=ertekelesek">Értékelések, Válaszok</a>
     </div>
 
     <div id="tartalom">
