@@ -20,7 +20,7 @@ $uid = $_SESSION['uid'];
 $sszoveg = mysqli_real_escape_string($adb, $input['sszoveg']);
 
 // Üzenet mentése az adatbázisba
-$query = "INSERT INTO support (uid, sszoveg, sstatusz) VALUES ('$uid', '$sszoveg', 'lezáratlan')";
+$query = "INSERT INTO support (uid, sszoveg, sstatusz) VALUES ('$uid', '$sszoveg', 1)";
 if (mysqli_query($adb, $query)) {
     echo json_encode(['success' => true]);
 } else {

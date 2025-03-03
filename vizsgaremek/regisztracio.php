@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regisztráció</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800;900&display=swap");
-
         * {
             box-sizing: border-box;
             font-family: "Barlow Semi Condensed", sans-serif;
@@ -110,17 +108,6 @@
 <body>
     <form action="reg_ir.php" method="post" target="kisablak" id="regisz">
         <label id="cim">Regisztráció</label>
-        
-        <div class="name-container">
-            <div>
-                <label for="keresztnev">Keresztnév:</label>
-                <input type="text" name="keresztnev" id="keresztnev" required>
-            </div>
-            <div>
-                <label for="vezeteknev">Vezetéknév:</label>
-                <input type="text" name="vezeteknev" id="vezeteknev" required>
-            </div>
-        </div>
 
         <label for="username">Felhasználónév:</label>
         <input type="text" name="username" id="username" required>
@@ -131,8 +118,8 @@
         <label for="password">Jelszó:</label>
         <input type="password" name="password" id="password" required>
 
-        <label for="checkbox1">
-            <input type="checkbox" name="beleegyezik" id="checkbox1" required>
+        <label for="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox" required>
             Beleegyezek a feltételekbe
         </label>
 

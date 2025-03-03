@@ -7,18 +7,12 @@
 </head>
 <body>
     <style>
-        body{
-            text-align: center;
-        }
+        
     </style>
-<h1>404 hiba</h1>
-<br>
-<p>valami hiba történt</p>
-    
-<?php
-
-
-
-?>
+    <div id="hiba">
+        <h1>404 hiba</h1>
+        <br>
+        <p>valami hiba történt</p>
+    </div>   
 </body>
 </html>

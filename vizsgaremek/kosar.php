@@ -1,16 +1,15 @@
 <?php
 require 'kapcsolat.php'; // Az adatbázis kapcsolatot biztosító fájl
-include("header.php");
 
 if (!isset($_SESSION['uid'])) {
-    echo "<p>Kérjük, jelentkezz be a kosár megtekintéséhez!</p>";
+    echo "<h2>Kérjük, jelentkezz be a kosár megtekintéséhez!</h2>";
     exit;
 }
 
 $uid = $_SESSION['uid'];
 
 // Lekérjük a felhasználó kosárba tett könyveit
-$query = "SELECT * FROM kosar WHERE uid = ?";
+$query = "SELECT * FROM kosar INNER JOIN konyvek ON kosar.kid = konyvek.konyvid  WHERE kosar.uid = ? AND kosar.statusz = 1";
 $stmt = mysqli_prepare($adb, $query);
 mysqli_stmt_bind_param($stmt, "i", $uid);
 mysqli_stmt_execute($stmt);
@@ -18,13 +17,13 @@ $result = mysqli_stmt_get_result($stmt);
 
 $cartItems = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    $bookId = $row['kgid'];
     $cartItems[] = [
-        'id' => $bookId,
-        'title' => "Könyv címe", // API vagy adatbázis alapján
-        'author' => "Szerző",   // API vagy adatbázis alapján
-        'cover' => "image_link", // API vagy adatbázis alapján
-        'price' => 2999 // Szimulált ár
+        'id' => $row['koid'],
+        'kid' => $row['kid'],
+        'title' => $row['kcim'], 
+        'author' => $row['iro'],   
+        'cover' => $row['borito'], 
+        'price' => $row['ar']
     ];
 }
 ?>
@@ -172,14 +171,24 @@ while ($row = mysqli_fetch_assoc($result)) {
                 </div>
                 <div class="actions">
                     <div class="book-price"><?= htmlspecialchars($item['price']) ?> Ft</div>
-                    <button class="btn remove-item" data-id="<?= $item['id'] ?>">Eltávolítás</button>
+                    <form action="remove_from_cart.php" target="kisablak" method="post">
+                        <button class="btn remove-item" type="submit">Eltávolítás</button>
+                        <input type="hidden" name="id" value="<?=htmlspecialchars($item['kid'])?>">
+                    </form>
                 </div>
             </li>
         <?php endforeach; ?>
     </ul>
 
-    <button class="btn" id="checkout">Vásárlás</button>
-    <a href="./?p=" class="btn btn-secondary">Vásárlás folytatása</a>
+    <a href="./?p=konyvek" class="btn btn-secondary">Vásárlás folytatása</a>
+    <?php $teljes = mysqli_fetch_array(mysqli_query($adb,"SELECT SUM(ar) AS total FROM konyvek INNER JOIN kosar ON konyvek.konyvid = kosar.kid WHERE kosar.statusz = 1 AND kosar.uid = '$uid'") ,MYSQLI_ASSOC);
+        if (isset($teljes['total'])) {
+            echo'<button class="btn" id="checkout">Fizetés</button>';
+            echo"<span>Teljes összeg:".$teljes['total']."Ft</span>" ;
+        }
+    ?>
+
+    
 </div>
 
 <!-- Modális ablak -->
@@ -187,61 +196,24 @@ while ($row = mysqli_fetch_assoc($result)) {
     <div class="modal-content">
         <button class="modal-close" id="close-modal">&times;</button>
         <div id="payment-step-1">
-            <h2>Fizetési mód</h2>
-            <button class="btn payment-method" data-method="cash">Utánvét (készpénz)</button>
-            <button class="btn payment-method" data-method="card">Bankkártya</button>
-        </div>
-        <div id="payment-step-2" class="step-hidden">
             <h2>Kártyaadatok</h2>
-            <form id="payment-form" action="process_payment.php" method="POST">
-                <input type="text" name="name" placeholder="Teljes név" required>
-                <input type="text" name="card_number" placeholder="Kártyaszám" required>
-                <input type="text" name="expiry" placeholder="Lejárati dátum (MM/YY)" required>
-                <input type="text" name="cvv" placeholder="CVV" required>
+            <form id="payment-form" action="process_payment.php" target="kisablak" method="POST">
+                <input type="text" name="name" placeholder="Teljes név" >
+                <input type="text" name="cardnumber" placeholder="Kártyaszám" >
+                <input type="text" name="expiry" placeholder="Lejárati dátum (MM/YY)" >
+                <input type="text" name="cvv" placeholder="CVV" >
                 <button type="submit" class="btn">Fizetés</button>
-            </form>
-        </div>
-        <div id="delivery-step" class="step-hidden">
-            <h2>Szállítási adatok</h2>
-            <form id="delivery-form">
-                <input type="text" name="address" placeholder="Cím" required>
-                <input type="text" name="city" placeholder="Város" required>
-                <input type="text" name="postcode" placeholder="Irányítószám" required>
-                <button type="submit" class="btn">Megrendelés</button>
             </form>
         </div>
     </div>
 </div>
 
 <script>
-    // Kosár elem eltávolítása
-    document.querySelectorAll('.remove-item').forEach(button => {
-        button.addEventListener('click', async function () {
-            const bookId = this.dataset.id;
-
-            const response = await fetch('remove_from_cart.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: bookId })
-            });
-
-            const result = await response.json();
-            if (result.success) {
-                const item = document.querySelector(`li[data-id="${bookId}"]`);
-                if (item) item.remove();
-            } else {
-                alert('Hiba történt az eltávolítás során.');
-            }
-        });
-    });
-
     // Fizetési modal
     const checkoutButton = document.getElementById('checkout');
     const paymentModal = document.getElementById('payment-modal');
     const closeModal = document.getElementById('close-modal');
     const paymentStep1 = document.getElementById('payment-step-1');
-    const paymentStep2 = document.getElementById('payment-step-2');
-    const deliveryStep = document.getElementById('delivery-step');
 
     checkoutButton.addEventListener('click', () => {
         paymentModal.style.display = 'flex';
@@ -259,27 +231,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         }
     });
 
-    document.querySelectorAll('.payment-method').forEach(button => {
-        button.addEventListener('click', () => {
-            const method = button.dataset.method;
-            if (method === 'cash') {
-                paymentStep1.style.display = 'none';
-                deliveryStep.style.display = 'block';
-            } else if (method === 'card') {
-                paymentStep1.style.display = 'none';
-                paymentStep2.style.display = 'block';
-            }
-        });
-    });
-
     function resetModal() {
         paymentStep1.style.display = 'block';
-        paymentStep2.style.display = 'none';
-        deliveryStep.style.display = 'none';
     }
 </script>
 </body>
 </html>
-
-
-

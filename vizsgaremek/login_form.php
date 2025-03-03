@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bejelentkezés</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800;900&display=swap");
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -88,7 +86,7 @@
 <div class="form-container">
     <h2>Bejelentkezés</h2>
     <form action="login_ir.php" method="post" target="kisablak">
-        <input name="email" type="text" placeholder="E-mail cím vagy felhasználó név" required><br>
+        <input name="email" type="text" placeholder="felhasználó név vagy e-mail cím" required><br>
         <input name="pw" type="password" placeholder="Jelszó" required><br>
         <input type="submit" value="Belépés"><br>
         <input type="button" value="Regisztráció" onclick="location.href='./?p=reg'"><br>

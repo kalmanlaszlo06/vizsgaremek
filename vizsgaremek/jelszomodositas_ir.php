@@ -1,27 +1,24 @@
 <?php
 session_start();
-
-print_r($_POST);
-
 include("kapcsolat.php");
 
-if($_POST['ujjelszo']=="") die("<script> alert('Jelszó?')  </script>");
-$regijelszo = mysqli_fetch_array(mysqli_query($adb,"SELECT password FROM user WHERE uid ='$_SESSION[uid]'"));
-    mysqli_query($adb , "
-    UPDATE user 
-    SET password = '$_POST[ujjelszo2]'
-    
-    WHERE uid='$_POST[uid]'
-    ");
+$pw = md5($_POST["pw"]);
+$pw2 = md5($_POST["pw2"]);
+$regijelszo = mysqli_fetch_array(mysqli_query($adb,"SELECT * FROM user WHERE uid ='$_SESSION[uid]'"));
 
+if($_POST['pw']==""){
+    die("<script> alert('add meg a régi jelszavadat!')</script>");
+} 
+if($_POST['pw2']==""){
+    die("<script> alert('add meg a új jelszavadat!')</script>");
+}
+if($pw!==$regijelszo["upassword"]){
+    die("<script> alert('nem egyezik a régi jelszó')</script>");
+} 
 
-
-print"
-    <script>
-    alert('Jelszavát sikeresen módosíottuk')
-    </script>
-";
-
+mysqli_query($adb , " UPDATE user SET upassword = '$pw2' WHERE uid = '$_POST[uid]'");
+echo "<script>alert('Jelszavát sikeresen módosítottuk')</script>";
+echo "<script>parent.location.href=parent.location.href</script>";
 mysqli_close($adb);
 
 ?>

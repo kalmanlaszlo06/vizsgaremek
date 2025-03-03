@@ -2,12 +2,10 @@
 session_start();
 require_once('kapcsolat.php'); // Adatbázis kapcsolat
 
-$response = ['success' => false];
-
 if (isset($_SESSION['uid'])) {
     $uid = $_SESSION['uid'];
 
-    $query = "SELECT COUNT(*) AS cart_count FROM kosar WHERE uid = ?";
+    $query = "SELECT COUNT(*) AS cart_count FROM kosar WHERE uid = ? AND statusz = 1";
     $stmt = mysqli_prepare($adb, $query);
     mysqli_stmt_bind_param($stmt, "i", $uid);
     mysqli_stmt_execute($stmt);

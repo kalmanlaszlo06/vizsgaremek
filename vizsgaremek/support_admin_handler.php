@@ -27,7 +27,7 @@ if (!$action || !$supportId) {
 
 if ($action === 'save') {
     $svalasz = mysqli_real_escape_string($adb, $input['svalasz'] ?? '');
-    $query = "UPDATE support SET svalasz = '$svalasz', sstatusz = 'lezárt' WHERE supportid = $supportId";
+    $query = "UPDATE support SET svalasz = '$svalasz', sstatusz = 0 WHERE supportid = $supportId";
     if (mysqli_query($adb, $query)) {
         echo json_encode(['success' => true]);
     } else {
