@@ -3,12 +3,12 @@
 include("../kapcsolat.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $uid = $_POST['uid'];
+    $kid = $_POST['kid'];
 
     // Felhasználó törlése
-    $query = "UPDATE konyvek SET statusz = 'b' WHERE uid = ?";
+    $query = "UPDATE konyvek SET statusz = 'b' WHERE konyvid = ?";
     $stmt = mysqli_prepare($adb, $query);
-    mysqli_stmt_bind_param($stmt, "i", $uid);
+    mysqli_stmt_bind_param($stmt, "i", $kid);
 
     if (mysqli_stmt_execute($stmt)) {
         echo "Könyv sikeresen törölve.";

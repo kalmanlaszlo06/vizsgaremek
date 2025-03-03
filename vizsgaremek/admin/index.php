@@ -39,7 +39,7 @@
 <body>
     <div id="menu" >
     <a href="../">Kezdőlap</a>
-    <a href="./?p=userek">Userek, belépések</a>
+    <a href="./?p=userek">Felhasználók</a>
     <a href="./?p=konyvek">Könyvek</a>
     <a href="./?p=kerdesek">Kérdések</a>
     <a href="./?p=ertekelesek">Vélemények</a>

@@ -95,13 +95,14 @@ if (!$result) {
                     </td>";
                 }
                 // Felhasználó törlése
-                echo "<td>
-                    <form method='POST' action='admin_delete_user.php'>
-                        <input type='hidden' name='uid' value='" . htmlspecialchars($row['uid']) . "'>
-                        <button type='submit' onclick='return confirm(\"Biztosan törölni akarod?\")'>Törlés</button>
-                    </form>
-                </td>";
-
+                if ($row['ustatusz'] != 'c') {
+                    echo "<td>
+                        <form method='POST' action='admin_delete_user.php'>
+                            <input type='hidden' name='uid' value='" . htmlspecialchars($row['uid']) . "'>
+                            <button type='submit' onclick='return confirm(\"Biztosan törölni akarod?\")'>Törlés</button>
+                        </form>
+                        </td>";
+                }
                 echo "</tr>";
             }
             ?>

@@ -55,6 +55,9 @@ $result = mysqli_query($adb, $query);
         .btn:hover {
             opacity: 0.8;
         }
+        h1 {
+            text-align: center;
+        }
     </style>
 </head>
 <body>

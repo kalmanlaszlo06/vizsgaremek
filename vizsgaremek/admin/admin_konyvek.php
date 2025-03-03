@@ -47,6 +47,7 @@ if (!$result) {
     </style>
 </head>
 <body>
+    <h1>Könyvek</h1>
 <table>
         <thead>
             <tr>
@@ -72,19 +73,20 @@ if (!$result) {
                 echo "<td>" . htmlspecialchars($row['ar']) . "</td>";
                 if ($row['statusz'] == 'a') {
                     echo "<td>Aktiv</td>";
-                }elseif ($row['ustatusz'] == 'b') {
-                    echo "<td>Admin</td>";
                 }else {
                     echo "<td>Törölt</td>";
                 }
 
                 // Felhasználó törlése
-                echo "<td>
+                if ($row['statusz'] == 'a') {
+                    echo "<td>
                     <form method='POST' action='admin_delete_konyvek.php'>
-                        <input type='hidden' name='uid' value='" . htmlspecialchars($row['konyvid']) . "'>
+                        <input type='hidden' name='kid' value='" . htmlspecialchars($row['konyvid']) . "'>
                         <button type='submit' onclick='return confirm(\"Biztosan törölni akarod?\")'>Törlés</button>
                     </form>
-                </td>";
+                    </td>";
+                }
+                
 
                 echo "</tr>";
             }
