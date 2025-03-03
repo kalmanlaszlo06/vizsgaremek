@@ -12,11 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_stmt_bind_param($stmt, "si", $ukomment, $uid);
 
     if (mysqli_stmt_execute($stmt)) {
-        echo "Komment sikeresen hozzáadva.";
+        echo "<script>alert('Komment sikeresen hozzáadva.')</script>";
     } else {
-        echo "Hiba történt a komment hozzáadásakor.";
+        echo "<script>alert('Hiba történt a komment hozzáadásakor')</script>.";
     }
-
     mysqli_stmt_close($stmt);
 }
 

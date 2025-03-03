@@ -31,29 +31,32 @@
     div#menu a:hover{
         color:white
     }
+    iframe{
+        /*display: none;*/
+    }
 </style>
 
 <body>
     <div id="menu" >
     <a href="../">Kezdőlap</a>
     <a href="./?p=userek">Userek, belépések</a>
+    <a href="./?p=konyvek">Könyvek</a>
     <a href="./?p=kerdesek">Kérdések</a>
-    <a href="./?p=asd">Szerkesztés</a>
-    <a href="./?p=ertekelesek">Értékelések, Válaszok</a>
+    <a href="./?p=ertekelesek">Vélemények</a>
     </div>
 
     <div id="tartalom">
-<?php
-    if(isset($_GET['p'])) $p = $_GET['p'];
-    else           $p="";
+    <?php
+        if(isset($_GET['p'])) $p = $_GET['p'];
+        else           $p="";
 
-    if ($p=="userek")       include("userek.php");
-    if ($p=="kerdesek")     include("kerdesek.php");
-    if ($p=="ertekelesek")  include("ertekelesek.php");
+        if ($p=="userek")       include("userek.php");
+        if ($p=="kerdesek")     include("kerdesek.php");
+        if ($p=="konyvek")      include("admin_konyvek.php");
+        if ($p=="ertekelesek")  include("ertekelesek.php");
 
-?>
-
-
+    ?>
+    <iframe name="kisablak" id="kisablak"></iframe>
     </div>
 </body>
 </html>

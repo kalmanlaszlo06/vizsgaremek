@@ -1,6 +1,6 @@
 <?php
 // Adatbázis kapcsolat
-$adb = mysqli_connect("localhost", "root", "", "kl_registration");
+include("../kapcsolat.php");
 
 if (!$adb) {
     die("Adatbázis kapcsolat sikertelen: " . mysqli_connect_error());
@@ -9,7 +9,7 @@ if (!$adb) {
 // Törlés művelet
 if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     $eid = intval($_GET['delete']);
-    $deleteQuery = "DELETE FROM ertekelesek WHERE eid = $eid";
+    $deleteQuery = "UPDATE ertekelesek SET status = 'b' WHERE eid = $eid";
 
     if (mysqli_query($adb, $deleteQuery)) {
         header("Location: ./?p=ertekelesek");
@@ -22,11 +22,10 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
 // Módosítás mentése
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
     $eid = intval($_POST['eid']);
-    $ertekeles = intval($_POST['ertekeles']);
     $eszoveg = mysqli_real_escape_string($adb, $_POST['eszoveg']);
     $updateQuery = "
         UPDATE ertekelesek 
-        SET ertekeles = $ertekeles, eszoveg = '$eszoveg', epontosido = NOW() 
+        SET eszoveg = '$eszoveg', edatum = NOW() 
         WHERE eid = $eid";
     if (mysqli_query($adb, $updateQuery)) {
         header("Location: ./?p=ertekelesek");
@@ -38,17 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
 
 // Értékelések lekérdezése
 $query = "
-    SELECT 
-        ertekelesek.eid, 
-        ertekelesek.konyvid, 
-        ertekelesek.ertekeles, 
-        ertekelesek.eszoveg, 
-        ertekelesek.epontosido, 
-        user.username, 
-        user.uemail 
-    FROM ertekelesek
-    JOIN user ON ertekelesek.uid = user.uid
-    ORDER BY ertekelesek.epontosido DESC
+    SELECT `eid`, `kid`, `eszoveg`,
+     `edatum`, `status` , `username` , `uemail` 
+    FROM `ertekelesek` 
+    INNER JOIN user ON ertekelesek.uid = user.uid
+    ORDER BY edatum DESC
 ";
 
 $result = mysqli_query($adb, $query);
@@ -119,9 +112,9 @@ if (!$result) {
                 <th>Könyv ID</th>
                 <th>Felhasználó</th>
                 <th>Email</th>
-                <th>Értékelés</th>
                 <th>Szöveg</th>
                 <th>Dátum</th>
+                <th>Állapot</th>
                 <th>Műveletek</th>
             </tr>
         </thead>
@@ -130,16 +123,21 @@ if (!$result) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . htmlspecialchars($row['eid']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['konyvid']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['kid']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['username']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['uemail']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['ertekeles']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['eszoveg']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['epontosido']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['edatum']) . "</td>";
+                echo "<td>"; 
+                if ($row['status'] == 'a') {
+                    echo 'aktiv';
+                }else{
+                    echo 'törölt';
+                }
+                echo "</td>";
                 echo "<td>";
                 echo "<form method='POST' style='display:inline;'>
                         <input type='hidden' name='eid' value='" . htmlspecialchars($row['eid']) . "'>
-                        <input type='number' name='ertekeles' value='" . htmlspecialchars($row['ertekeles']) . "' min='1' max='5' required>
                         <input type='text' name='eszoveg' value='" . htmlspecialchars($row['eszoveg']) . "' required>
                         <button type='submit' name='update'>Módosítás</button>
                       </form>";

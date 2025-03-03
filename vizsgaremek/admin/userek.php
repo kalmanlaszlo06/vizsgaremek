@@ -1,6 +1,6 @@
 <?php
 // Adatbázis kapcsolat
-$adb = mysqli_connect("localhost", "root", "", "kl_registration");
+include("../kapcsolat.php");
 
 // Felhasználói adatok lekérdezése
 $query = "SELECT * FROM user";
@@ -52,12 +52,10 @@ if (!$result) {
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Username</th>
+                <th>Felhasználó név</th>
                 <th>Email</th>
                 <th>Regisztráció dátuma</th>
-                <th>Születési dátum</th>
-                <th>Vezetéknév</th>
-                <th>Keresztnév</th>
+                <th>Állapot</th>
                 <th>Komment hozzáadása</th>
                 <th>Törlés</th>
             </tr>
@@ -67,22 +65,35 @@ if (!$result) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>" . htmlspecialchars($row['uid']) . "</td>";
-                echo "<td><a href='adatlap_form1.php?uid=" . urlencode($row['uid']) . "'>" . htmlspecialchars($row['username']) . "</a></td>";
+                echo "<td><a href='../?p=adatlapom&id=" . urlencode($row['uid']) . "'>" . htmlspecialchars($row['username']) . "</a></td>";
                 echo "<td>" . htmlspecialchars($row['uemail']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['udatum']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['uszuldatum']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['ufirstname']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['ulastname']) . "</td>";
+                if ($row['ustatusz'] == 'a') {
+                    echo "<td>Aktiv</td>";
+                }elseif ($row['ustatusz'] == 'b') {
+                    echo "<td>Admin</td>";
+                }else {
+                    echo "<td>Törölt</td>";
+                }
 
                 // Komment hozzáadása
-                echo "<td>
-                    <form method='POST' action='admin_komment.php'>
-                        <input type='hidden' name='uid' value='" . htmlspecialchars($row['uid']) . "'>
-                        <input type='text' name='ukomment' placeholder='Írj kommentet'>
-                        <button type='submit'>Hozzáadás</button>
-                    </form>
-                </td>";
-
+                if (isset($row['ukomment']) ) {
+                    echo "<td>
+                        <form method='POST' action='admin_komment.php'>
+                            <input type='hidden' name='uid' value='" . htmlspecialchars($row['uid']) . "'>
+                            <input type='text' name='ukomment' placeholder='". htmlspecialchars($row['ukomment']) ."'>
+                            <button type='submit'>Hozzáadás</button>
+                        </form>
+                    </td>";
+                }else {
+                    echo "<td>
+                        <form method='POST' action='admin_komment.php'>
+                            <input type='hidden' name='uid' value='" . htmlspecialchars($row['uid']) . "'>
+                            <input type='text' name='ukomment' placeholder='Írj kommentet'>
+                            <button type='submit'>Hozzáadás</button>
+                        </form>
+                    </td>";
+                }
                 // Felhasználó törlése
                 echo "<td>
                     <form method='POST' action='admin_delete_user.php'>
