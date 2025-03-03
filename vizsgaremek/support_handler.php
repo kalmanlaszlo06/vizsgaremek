@@ -2,28 +2,25 @@
 session_start();
 include("kapcsolat.php");
 
-header('Content-Type: application/json');
-
 // Ellenőrizni, hogy a felhasználó be van-e jelentkezve
 if (!isset($_SESSION['uid'])) {
-    echo json_encode(['success' => false, 'message' => 'Be kell jelentkezni az üzenetküldéshez.']);
-    exit;
-}
+    echo "<script>alert('Először jelentkez be!')</script>";
+}else{
+    $input = $_POST['supportMessage'];
+    if (!isset($input) || trim($input) === '') {
+        echo "<script>alert('Nem lehet üres a üzenet!')</script>";
+    }else{
+        $uid = $_SESSION['uid'];
+        $sszoveg = mysqli_real_escape_string($adb, $input);
 
-$input = json_decode(file_get_contents('php://input'), true);
-if (!isset($input['sszoveg']) || trim($input['sszoveg']) === '') {
-    echo json_encode(['success' => false, 'message' => 'Az üzenet nem lehet üres.']);
-    exit;
-}
-
-$uid = $_SESSION['uid'];
-$sszoveg = mysqli_real_escape_string($adb, $input['sszoveg']);
-
-// Üzenet mentése az adatbázisba
-$query = "INSERT INTO support (uid, sszoveg, sstatusz) VALUES ('$uid', '$sszoveg', 1)";
-if (mysqli_query($adb, $query)) {
-    echo json_encode(['success' => true]);
-} else {
-    echo json_encode(['success' => false, 'message' => 'Hiba történt az üzenet mentésekor.']);
+        // Üzenet mentése az adatbázisba
+        $query = "INSERT INTO support (uid, sszoveg, sstatusz) VALUES ('$uid', '$sszoveg', 1)";
+        if (mysqli_query($adb, $query)) {
+            echo "<script>alert('Sikeresen volt a üzenet küldés!')</script>";
+        } else {
+            echo "<script>alert('Sikertelen volt a üzenet küldés!')</script>";
+        }
+    }
+    echo "<script>parent.location.href=parent.location.href</script>";
 }
 ?>

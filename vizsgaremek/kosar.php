@@ -198,10 +198,10 @@ while ($row = mysqli_fetch_assoc($result)) {
         <div id="payment-step-1">
             <h2>Kártyaadatok</h2>
             <form id="payment-form" action="process_payment.php" target="kisablak" method="POST">
-                <input type="text" name="name" placeholder="Teljes név" >
-                <input type="text" name="cardnumber" placeholder="Kártyaszám" >
-                <input type="text" name="expiry" placeholder="Lejárati dátum (MM/YY)" >
-                <input type="text" name="cvv" placeholder="CVV" >
+                <input type="text" name="name" placeholder="Teljes név" required>
+                <input type="text" name="card_number" placeholder="Kártyaszám" required>
+                <input type="text" name="expiry" placeholder="Lejárati dátum (MM/YY)" required>
+                <input type="text" name="cvv" placeholder="CVV" required>
                 <button type="submit" class="btn">Fizetés</button>
             </form>
         </div>

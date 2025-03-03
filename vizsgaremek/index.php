@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Főoldal</title>
+    <title>Bookli</title>
 </head>
 <body>
 <style>
@@ -87,6 +87,7 @@
         <?php
         if (isset($_SESSION['uid'])) {
             echo '<a href="./?p=konyv_lista"><button>Saját listám</button></a>';
+            echo '<a href="./?p=support"><button>Support</button></a>';
         }
         if (isset($_SESSION['uid']) && isset($admi)) {
             echo '<a href="admin/index.php"><button>Admin</button></a>';
@@ -187,64 +188,17 @@
 
 <div class="support-tab" onclick="toggleSupportPopup()">💬 Support</div>
 <div class="support-popup" id="supportPopup">
-    <textarea id="supportMessage" placeholder="Írja le a kérdését..."></textarea>
-    <button onclick="sendSupportMessage()">Küldés</button>
+    <form action="support_handler.php" target="kisablak" method="post">
+        <textarea name="supportMessage" id="supportMessage" placeholder="Írja le a kérdését..."></textarea>
+        <input type="submit" value="Küldés">
+    </form>
+    
 </div>
 <script>
     function toggleSupportPopup() {
         const popup = document.getElementById('supportPopup');
         popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
     }
-
-    function sendSupportMessage() {
-        const message = document.getElementById('supportMessage').value;
-        if (message.trim() === '') {
-            alert('Kérjük, írja be a kérdését!');
-            return;
-        }
-
-        // AJAX kérés küldése a PHP backendhez
-        fetch('support_handler.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sszoveg: message })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('A kérdése sikeresen elküldve!');
-                document.getElementById('supportMessage').value = '';
-                toggleSupportPopup();
-            } else {
-                alert('Hiba történt az üzenet elküldésekor.');
-            }
-        })
-        .catch(err => console.error(err));
-    }
-
-    // Üzenetek frissítése
-    function fetchMessages() {
-        fetch('fetch_messages.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.messages && data.messages.length > 0) {
-                    const messageContainer = document.getElementById('messages');
-                    messageContainer.innerHTML = ''; // Az eddigi üzenetek törlése
-                    data.messages.forEach(message => {
-                        const messageElement = document.createElement('div');
-                        messageElement.className = 'message';
-                        messageElement.textContent = message.sszoveg + ' - ' + message.username;
-                        messageContainer.appendChild(messageElement);
-                    });
-                }
-            })
-            .catch(err => console.error('Hiba történt az üzenetek lekérésekor:', err));
-    }
-
-    // Polling (5 másodpercenként)
-    setInterval(fetchMessages, 5000);
-
-
 </script>
 <?php
     if (isset($_GET['p'])) $p=$_GET['p']; else $p="";
@@ -265,12 +219,13 @@
         else if ($p == "konyv_lista")       include("konyv_lista.php");
         else if ($p == "konyvreszletek")    include("konyv_reszletek.php");
         else if ($p == "kosar")             include("kosar.php");
+        else if ($p == "support")           include("support.php");
         else                                include("404.php");
     }
 ?>
 <iframe name="kisablak"></iframe>
 <footer>
-    <p>&copy; 2024 Bookli.hu Minden jog fenntartva.</p>
+    <p>&copy; 2024 Bookli.hu Minden jog fenntartva. Hogy hivják a kínai könyvmolyt. Bookli! </p>
     <?php var_dump($_SESSION['uid']);?>
 </footer>
 </body>

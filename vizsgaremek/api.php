@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
-$adb = mysqli_connect("localhost", "root", "", "kl_registration");
+include("kapcsolat.php");
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    echo json_encode(['error' => 'hibás id']);
+    echo "<script>alert('nincs id megadva!')</script>";
     exit; 
 }
 
@@ -12,7 +12,7 @@ $id = mysqli_real_escape_string($adb, $_GET['id']);
 $konyvek = mysqli_query($adb, "SELECT * FROM konyvek WHERE konyvid = '$id'");
 
 if (!$konyvek) {
-    echo json_encode(['error' => 'valami hiba történt']);
+    echo "<script>alert('valami hiba történt!')</script>";
     exit;
 }
 

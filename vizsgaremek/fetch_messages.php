@@ -11,7 +11,7 @@ if (!isset($_SESSION['uid'])) {
 // Az új üzenetek lekérése
 $query = "SELECT s.sszoveg, u.username FROM support s
           LEFT JOIN user u ON s.uid = u.uid
-          WHERE s.sstatusz = 'lezáratlan'
+          WHERE s.sstatusz = 1
           ORDER BY s.sdatum DESC";
 
 $result = mysqli_query($adb, $query);

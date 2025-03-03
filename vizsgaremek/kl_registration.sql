@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 25. 14:53
+-- Létrehozás ideje: 2025. Már 03. 14:53
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -42,7 +42,7 @@ CREATE TABLE `ertekelesek` (
 --
 
 INSERT INTO `ertekelesek` (`eid`, `uid`, `kid`, `eszoveg`, `edatum`, `status`) VALUES
-(1, 21, 2, 'faszsa', '2024-12-02', 'a'),
+(1, 21, 2, 'faszsa', '2024-12-02', 'b'),
 (2, 21, 1, 'gsgs', '2025-01-20', 'a'),
 (3, 25, 1, 'gfg', '2025-01-22', 'a'),
 (4, 25, 1, '637557', '2025-01-22', 'a'),
@@ -51,7 +51,7 @@ INSERT INTO `ertekelesek` (`eid`, `uid`, `kid`, `eszoveg`, `edatum`, `status`) V
 (7, 25, 1, '889574', '2025-01-22', 'a'),
 (8, 25, 1, '$time', '2025-01-22', 'a'),
 (9, 26, 1, 'kÃ¶sz nem', '2025-01-23', 'a'),
-(10, 25, 1, '555', '2025-01-27', 'a');
+(10, 25, 1, '999', '2025-03-03', 'a');
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ INSERT INTO `klista` (`klid`, `uid`, `kid`, `status`, `oldal`, `ertek`) VALUES
 (1, 25, 2, 3, 45, 5),
 (2, 25, 1, 3, 6, 5),
 (3, 25, 3, 2, 1, 3),
-(4, 26, 1, 2, 64, 1);
+(4, 26, 1, 3, 6, 5);
 
 -- --------------------------------------------------------
 
@@ -105,9 +105,11 @@ CREATE TABLE `konyvek` (
 
 INSERT INTO `konyvek` (`konyvid`, `kcim`, `alcim`, `borito`, `iro`, `kiado`, `kdatum`, `mufaj`, `statusz`, `leiras`, `ar`, `oldal`) VALUES
 (1, 'Research in action', 'Theories and practices for innovation and social change', 'http://books.google.com/books/content?id=Gs_7EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'Conny Almekinders, Leni Beukema, Coyan Tromp', 'BRILL', '2023-09-04', 'Social Science', 'a', 'Research in action engages the researcher who wants to live up to the challenges of contemporary science and to contribute to innovation and social change. This ambition to contribute to change raises many questions. How to define the main target group of the research? What role does this group play in the research? Which methods of data collection are most appropriate? Who are the commissioners of the research and do their interests match with those of the prime target group? How to deal with power relations in research situations? What do these issues mean for the relation of researcher with the people in the researched situation? And, last but not least, what does it all imply for the researcher him- or herself? These questions have to be dealt with in situations in which the design and organization of the research is still open but also in situations where these have already been preformatted through the research proposal or earlier developments. In any case, they have to be framed in the theoretical considerations of what is science. This book aims to assist scholars and practitioners who would want to deal with this kind of research and questions. The book does not offer recipes, nor fixed scenarios. It presents a series of practical research cases and theoretical insights by experienced researchers who themselves struggled with what is probably the most meaningful questions of the science today. The practical examples of research in action are from different disciplines and include themes from health care, policy research, agricultural technology and education, in Northern and Southern context. Four leading themes of research in action are introduced in the first chapter. In the last chapter the editors return to the dilemmas research in action and try to clarify the options and responses that are possible in different situations.', 2999, 272),
-(2, 'Controversies in Affirmative Action', 'volumes', 'http://books.google.com/books/content?id=HEXPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'James A. Beckman', 'Bloomsbury Publishing USA', '2014-07-23', 'Social Science', 'a', 'An engaging and eclectic collection of essays from leading scholars on the subject, which looks at affirmative action past and present, analyzes its efficacy, its legacy, and its role in the future of the United States. This comprehensive, three-volume set explores the ways the United States has interpreted affirmative action and probes the effects of the policy from the perspectives of economics, law, philosophy, psychology, sociology, political science, and race relations. Expert contributors tackle a host of knotty issues, ranging from the history of affirmative action to the theories underpinning it. They show how affirmative action has been implemented over the years, discuss its legality and constitutionality, and speculate about its future. Volume one traces the origin and evolution of affirmative action. Volume two discusses modern applications and debates, and volume three delves into such areas as international practices and critical race theory. Standalone essays link cause and effect and past and present as they tackle intriguing—and important—questions. When does affirmative action become \"reverse discrimination\"? How many decades are too many for a temporary\r\npolicy to remain in existence? Does race- or gender-based affirmative action violate the equal protection of law guaranteed by the Fourteenth Amendment? In raising such issues, the work encourages readers to come to their own conclusions about the policy and its future application.', 2999, 973),
+(2, 'Controversies in Affirmative Action', 'volumes', 'http://books.google.com/books/content?id=HEXPEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'James A. Beckman', 'Bloomsbury Publishing USA', '2014-07-23', 'Social Science', 'b', 'An engaging and eclectic collection of essays from leading scholars on the subject, which looks at affirmative action past and present, analyzes its efficacy, its legacy, and its role in the future of the United States. This comprehensive, three-volume set explores the ways the United States has interpreted affirmative action and probes the effects of the policy from the perspectives of economics, law, philosophy, psychology, sociology, political science, and race relations. Expert contributors tackle a host of knotty issues, ranging from the history of affirmative action to the theories underpinning it. They show how affirmative action has been implemented over the years, discuss its legality and constitutionality, and speculate about its future. Volume one traces the origin and evolution of affirmative action. Volume two discusses modern applications and debates, and volume three delves into such areas as international practices and critical race theory. Standalone essays link cause and effect and past and present as they tackle intriguing—and important—questions. When does affirmative action become \"reverse discrimination\"? How many decades are too many for a temporary\r\npolicy to remain in existence? Does race- or gender-based affirmative action violate the equal protection of law guaranteed by the Fourteenth Amendment? In raising such issues, the work encourages readers to come to their own conclusions about the policy and its future application.', 2999, 973),
 (3, 'The Affirmative Action Debate', 'nincs', 'http://books.google.com/books/content?id=uT_jAQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'Steven M. Cahn', 'Routledge', '2013-10-31', 'Business & Economics', 'a', 'First Published in 1996. Routledge is an imprint of Taylor & Francis, an informa company.', 2999, 236),
-(4, 'Action Learning in Health, Social and Community Care', 'Principles, Practices and Resources', 'http://books.google.com/books/content?id=EuM2DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'John Edmonstone', 'CRC Press', '2017-09-22', 'Medical', 'a', 'This comprehensive guide covers all aspects of action learning, one of the most widely used development methods in health, social and community care. The book addresses the theory and practice of action learning in these fields, and considers action learning as an adult educational ethos as well as a helpful tool. Based upon emerging experience, it identifies good practice in action learning and offers a wide range of resources to enable individuals and organisations extract maximum benefit from this approach. Offering practical tips grounded in sound educational principles, this book is invaluable reading for all senior managers and professionals considering using action learning for leadership, management and organisation development purposes, including organisation development practitioners and action learning facilitators, and for medical and healthcare educators and their counterparts in social and community care looking for a general introduction to this growing field.', 3000, 319);
+(4, 'Action Learning in Health, Social and Community Care', 'Principles, Practices and Resources', 'http://books.google.com/books/content?id=EuM2DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'John Edmonstone', 'CRC Press', '2017-09-22', 'Medical', 'a', 'This comprehensive guide covers all aspects of action learning, one of the most widely used development methods in health, social and community care. The book addresses the theory and practice of action learning in these fields, and considers action learning as an adult educational ethos as well as a helpful tool. Based upon emerging experience, it identifies good practice in action learning and offers a wide range of resources to enable individuals and organisations extract maximum benefit from this approach. Offering practical tips grounded in sound educational principles, this book is invaluable reading for all senior managers and professionals considering using action learning for leadership, management and organisation development purposes, including organisation development practitioners and action learning facilitators, and for medical and healthcare educators and their counterparts in social and community care looking for a general introduction to this growing field.', 3000, 319),
+(5, 'Romantic Love', NULL, 'http://books.google.com/books/content?id=b1yOJtOwvWIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'Yolanda van Ede', 'LIT Verlag Munster', '2006', 'Family & Relationships', 'a', 'A book about romantic love.', 2881, 138),
+(6, 'Women\'s Romantic Theatre and Drama', 'History, Agency, and Performativity', 'http://books.google.com/books/content?id=1s2MeSIsk3oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', 'Lilla Maria Crisafulli, Keir Elam', 'Ashgate Publishing, Ltd.', '2010', 'Literary Collections', 'a', 'Bringing together leading British, North American, and Italian critics, this collection makes a crucial intervention in the reclamation of women\'s theatrical activities during the Romantic period.', 2699, 308);
 
 -- --------------------------------------------------------
 
@@ -139,7 +141,9 @@ INSERT INTO `kosar` (`koid`, `uid`, `kid`, `statusz`, `kdatum`) VALUES
 (9, 25, 4, 0, '2025-02-24 14:49:28'),
 (10, 25, 4, 0, '2025-02-25 13:56:49'),
 (11, 25, 3, 0, '2025-02-25 14:48:40'),
-(12, 25, 4, 0, '2025-02-25 14:48:48');
+(12, 25, 4, 0, '2025-02-25 14:48:48'),
+(13, 25, 1, 0, '2025-03-03 12:55:44'),
+(14, 25, 1, 1, '2025-03-03 12:56:08');
 
 -- --------------------------------------------------------
 
@@ -2939,7 +2943,196 @@ INSERT INTO `naplo` (`nid`, `ndate`, `nip`, `nsession`, `nuid`, `nurl`) VALUES
 (2688, '2025-02-25 14:49:40', '::1', 'a0vqrd3s', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
 (2689, '2025-02-25 14:50:20', '::1', 'a0vqrd3s', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
 (2690, '2025-02-25 14:50:22', '::1', 'a0vqrd3s', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
-(2691, '2025-02-25 14:53:02', '::1', 'a0vqrd3s', 25, '/meszarostibor/vizsgaremek/?p=kosar');
+(2691, '2025-02-25 14:53:02', '::1', 'a0vqrd3s', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2692, '2025-02-25 15:26:53', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2693, '2025-02-25 15:26:58', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2694, '2025-02-25 15:27:37', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2695, '2025-02-25 15:28:40', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2696, '2025-02-25 15:29:04', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2697, '2025-02-25 15:31:09', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2698, '2025-02-25 15:31:28', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2699, '2025-02-25 15:35:23', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2700, '2025-02-25 15:36:56', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2701, '2025-02-25 15:38:55', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2702, '2025-02-25 15:39:31', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2703, '2025-02-25 15:42:57', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2704, '2025-02-25 15:44:36', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2705, '2025-02-25 15:45:01', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2706, '2025-02-25 15:49:14', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2707, '2025-02-25 15:51:05', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2708, '2025-02-25 15:53:50', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2709, '2025-02-25 15:54:01', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2710, '2025-02-25 15:55:58', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2711, '2025-02-25 15:57:58', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2712, '2025-02-25 15:59:41', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2713, '2025-02-25 15:59:48', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2714, '2025-02-25 16:01:06', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2715, '2025-02-25 16:01:08', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2716, '2025-02-25 16:03:31', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2717, '2025-02-25 16:03:32', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2718, '2025-02-25 16:03:33', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2719, '2025-02-25 16:03:44', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2720, '2025-02-25 16:05:45', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2721, '2025-02-25 16:06:19', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2722, '2025-02-25 16:06:57', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar');
+INSERT INTO `naplo` (`nid`, `ndate`, `nip`, `nsession`, `nuid`, `nurl`) VALUES
+(2723, '2025-02-25 16:07:07', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2724, '2025-02-25 16:13:19', '::1', 'sirlsm3q', 25, '/meszarostibor/vizsgaremek/?p=kosar'),
+(2725, '2025-02-26 13:41:39', '::1', '1c2t0in5', 0, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2726, '2025-02-26 13:41:41', '::1', '1c2t0in5', 0, '/meszarostibor/vizsgaremek/?p=login'),
+(2727, '2025-02-26 13:41:46', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2728, '2025-02-26 13:43:07', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2729, '2025-02-26 14:21:41', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/'),
+(2730, '2025-02-26 14:21:42', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/'),
+(2731, '2025-02-26 14:23:29', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2732, '2025-02-26 14:24:00', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2733, '2025-02-26 14:25:31', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2734, '2025-02-26 14:27:51', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2735, '2025-02-26 14:39:33', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2736, '2025-02-26 14:39:51', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2737, '2025-02-26 14:47:18', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2738, '2025-02-26 14:47:26', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2739, '2025-02-26 14:47:59', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2740, '2025-02-26 14:48:21', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2741, '2025-02-26 14:49:28', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2742, '2025-02-26 14:49:29', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2743, '2025-02-26 14:49:48', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2744, '2025-02-26 14:50:03', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2745, '2025-02-26 14:51:59', '::1', '1c2t0in5', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2746, '2025-02-27 10:02:20', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2747, '2025-02-27 10:02:49', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/'),
+(2748, '2025-02-27 10:02:53', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2749, '2025-02-27 10:05:19', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2750, '2025-02-27 10:05:40', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2751, '2025-02-27 10:06:07', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2752, '2025-02-27 10:07:29', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2753, '2025-02-27 10:08:13', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2754, '2025-02-27 10:09:10', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2755, '2025-02-27 10:09:37', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2756, '2025-02-27 10:09:52', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2757, '2025-02-27 10:13:23', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2758, '2025-02-27 10:14:06', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2759, '2025-02-27 10:14:27', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2760, '2025-02-27 10:16:34', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2761, '2025-02-27 10:17:57', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2762, '2025-02-27 10:23:14', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2763, '2025-02-27 10:23:15', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2764, '2025-02-27 10:23:35', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2765, '2025-02-27 10:26:32', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2766, '2025-02-27 10:27:03', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2767, '2025-02-27 10:27:24', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2768, '2025-02-27 10:28:18', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2769, '2025-02-27 10:28:53', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2770, '2025-02-27 10:29:02', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2771, '2025-02-27 10:31:09', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2772, '2025-02-27 10:31:13', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/?p=support'),
+(2773, '2025-02-27 10:31:38', '::1', 'lro7nhab', 25, '/meszarostibor/vizsgaremek/'),
+(2774, '2025-02-27 11:41:40', '::1', 'f5mg93f7', 0, '/meszarostibor/vizsgaremek/?p=login'),
+(2775, '2025-02-27 11:41:48', '::1', 'f5mg93f7', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2776, '2025-02-27 12:20:18', '::1', 'f5mg93f7', 25, '/meszarostibor/vizsgaremek/'),
+(2777, '2025-02-27 12:20:22', '::1', 'f5mg93f7', 25, '/meszarostibor/vizsgaremek/?p=adatlapom'),
+(2778, '2025-02-27 12:21:22', '::1', 'f5mg93f7', 25, '/meszarostibor/vizsgaremek/?p=adatlapom&id=17'),
+(2779, '2025-03-03 12:29:31', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/'),
+(2780, '2025-03-03 12:29:33', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2781, '2025-03-03 12:29:34', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2782, '2025-03-03 12:55:44', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2783, '2025-03-03 12:55:47', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2784, '2025-03-03 12:55:52', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2785, '2025-03-03 12:55:58', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2786, '2025-03-03 12:56:01', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2787, '2025-03-03 12:56:06', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2788, '2025-03-03 12:56:08', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2789, '2025-03-03 13:19:36', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=4'),
+(2790, '2025-03-03 13:20:10', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2791, '2025-03-03 13:20:20', '::1', 'kc67c8q0', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2792, '2025-03-03 13:33:44', '::1', '4t39mvip', 0, '/meszarostibor/vizsgaremek/'),
+(2793, '2025-03-03 13:33:45', '::1', '4t39mvip', 0, '/meszarostibor/vizsgaremek/?p=login'),
+(2794, '2025-03-03 13:33:55', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2795, '2025-03-03 13:41:43', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/'),
+(2796, '2025-03-03 13:52:12', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/'),
+(2797, '2025-03-03 13:52:13', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2798, '2025-03-03 13:52:15', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2799, '2025-03-03 13:52:24', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2800, '2025-03-03 13:52:25', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2801, '2025-03-03 13:52:51', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2802, '2025-03-03 13:52:51', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2803, '2025-03-03 13:52:53', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2804, '2025-03-03 13:52:53', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=4'),
+(2805, '2025-03-03 13:52:54', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2806, '2025-03-03 13:52:55', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=3'),
+(2807, '2025-03-03 13:52:56', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2808, '2025-03-03 13:52:57', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2809, '2025-03-03 13:53:56', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2810, '2025-03-03 13:53:57', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2811, '2025-03-03 13:53:57', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2812, '2025-03-03 13:53:58', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2813, '2025-03-03 13:53:58', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2814, '2025-03-03 13:53:58', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2815, '2025-03-03 13:54:07', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2816, '2025-03-03 13:55:45', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2817, '2025-03-03 13:56:38', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/'),
+(2818, '2025-03-03 14:05:10', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2819, '2025-03-03 14:05:11', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2820, '2025-03-03 14:05:42', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2821, '2025-03-03 14:06:34', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2822, '2025-03-03 14:06:35', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2823, '2025-03-03 14:08:44', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2824, '2025-03-03 14:14:08', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2825, '2025-03-03 14:19:43', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2826, '2025-03-03 14:19:45', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2827, '2025-03-03 14:38:13', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2828, '2025-03-03 14:38:28', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2829, '2025-03-03 14:39:21', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2830, '2025-03-03 14:42:14', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2831, '2025-03-03 14:43:18', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2832, '2025-03-03 14:45:14', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2833, '2025-03-03 14:45:15', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2834, '2025-03-03 14:45:16', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2835, '2025-03-03 14:45:16', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2836, '2025-03-03 14:45:16', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2837, '2025-03-03 14:47:05', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2838, '2025-03-03 14:47:07', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2839, '2025-03-03 14:47:14', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2840, '2025-03-03 14:47:14', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2841, '2025-03-03 14:47:45', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=1'),
+(2842, '2025-03-03 14:47:46', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2843, '2025-03-03 14:47:46', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=3'),
+(2844, '2025-03-03 14:47:47', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=3'),
+(2845, '2025-03-03 14:47:48', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2846, '2025-03-03 14:47:49', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=4'),
+(2847, '2025-03-03 14:47:50', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2848, '2025-03-03 14:47:50', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2849, '2025-03-03 14:52:20', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=5'),
+(2850, '2025-03-03 14:52:21', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvek'),
+(2851, '2025-03-03 14:52:58', '::1', '4t39mvip', 25, '/meszarostibor/vizsgaremek/?p=konyvreszletek&id=6');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `support`
+--
+
+CREATE TABLE `support` (
+  `supportid` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `sszoveg` text COLLATE utf8_hungarian_ci NOT NULL,
+  `svalasz` text COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `sstatusz` int(11) NOT NULL,
+  `stat` int(11) NOT NULL,
+  `sdatum` datetime NOT NULL DEFAULT current_timestamp(),
+  `slezar` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `support`
+--
+
+INSERT INTO `support` (`supportid`, `uid`, `sszoveg`, `svalasz`, `sstatusz`, `stat`, `sdatum`, `slezar`) VALUES
+(1, 25, 'asdfgh', NULL, 1, 0, '2025-02-26 13:43:12', NULL),
+(2, 25, 'segitsÃ©g eloptÃ¡k a fiokomat', 'beszoptad XD', 0, 1, '2025-02-26 14:47:57', '2025-02-26 14:49:24'),
+(3, 25, 'asfdds', NULL, 1, 0, '2025-02-27 10:26:37', NULL),
+(4, 25, 'eloptÃ¡k a kÃ©sem te kÃ¶csÃ¶g!!!', 'XD fkgftk gkig', 0, 1, '2025-02-27 10:27:22', '2025-02-27 11:55:41'),
+(5, 25, 'geg te csanÃ¡d', ' jfkjagkf', 0, 1, '2025-02-27 10:31:08', '2025-02-27 11:49:46');
 
 -- --------------------------------------------------------
 
@@ -2952,37 +3145,33 @@ CREATE TABLE `user` (
   `username` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `uemail` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
   `upassword` varchar(64) COLLATE utf8_hungarian_ci NOT NULL,
-  `uszuldatum` date NOT NULL,
   `uprofkepnev` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   `uprofkepnev_eredetinev` varchar(250) COLLATE utf8_hungarian_ci NOT NULL,
   `udatum` datetime NOT NULL,
   `uip` varchar(48) COLLATE utf8_hungarian_ci NOT NULL,
   `usession` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
   `ustatusz` varchar(2) COLLATE utf8_hungarian_ci NOT NULL,
-  `ukomment` text COLLATE utf8_hungarian_ci NOT NULL,
-  `ufirstname` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
-  `ulastname` varchar(255) COLLATE utf8_hungarian_ci NOT NULL
+  `ukomment` text COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `user`
 --
 
-INSERT INTO `user` (`uid`, `username`, `uemail`, `upassword`, `uszuldatum`, `uprofkepnev`, `uprofkepnev_eredetinev`, `udatum`, `uip`, `usession`, `ustatusz`, `ukomment`, `ufirstname`, `ulastname`) VALUES
-(12, 'asdasds', 'asd@asd.com', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', '2000-02-10', '12_241024113458_7hsfu8xp3t.png', 'randomkep.png', '2024-10-14 11:51:01', '', '', '', '', 'asdasdasdasdasdasdasd', 'asd'),
-(14, 'asdasdsadas', 'asd@asd.com', '7815696ecbf1c96e6894b779456d330e', '2020-02-21', '14_241014143939_hdhcabvjb0.png', 'randomkep.png', '2024-10-14 14:37:17', '', '', '', '', 'asdas', 'asdasd'),
-(15, 'asdasd12', 'asd@asd.com', 'bbba0cdac12dbd5917cc24cc90d4b23a', '0000-00-00', '15_241014144650_bkzj371vzd.png', 'randomkep.png', '2024-10-14 14:41:27', '', '', '', '', 'asd', 'asdasdas'),
-(16, 'asd', 'asd@asd.com', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', '2002-12-12', '', '', '2024-10-21 11:54:09', '', '', '', '', 'asdasd', 'asdasdasd'),
-(17, 'asdasd12', 'asd@asd.com', '52b0c5448cacc00a8df06267afeffd0d', '2111-12-12', '', '', '2024-10-21 12:23:59', '', '', '', '', 'asdasd', 'asdasdasd'),
-(18, 'aaa', 'asd@asd.com', 'aaa1', '2024-11-07', '', '', '2024-11-04 12:42:43', '', '', '', '', 'asd', 'asdasdas'),
-(19, 'asdadsdsdsdsdsdsdsdsdsdd', 'asd@asd.com', 'aaa123', '1999-10-22', '19_241104143109_9is383lq2x.jpg', 'alapprofilkep.jfif', '2024-11-04 13:09:01', '', '', '', '', 'sdsdsd', 'asdasd'),
-(20, 'lacika1234567', 'asd@asd.com', 'aaa123', '2024-11-30', '', '', '2024-11-04 13:10:37', '', '', '', '', 'asdasd', 'asdasdas'),
-(21, 'iceee', 'icehfh@gmail.hu', '123456', '2000-04-04', '', '', '2024-12-02 12:10:01', '', '', '', '', 'acs', 'tamas'),
-(22, 'fgh', 'fgh@asd.hu', '123456', '0435-05-06', '', '', '2024-12-02 14:28:32', '', '', '', '', 'asdio', 'rtzuoip'),
-(23, 'qwe', 'qwe@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00', '', '', '2024-12-02 14:55:02', '', '', '', '', 'serj', 'szds'),
-(24, 'iced', 'iced@g.hu', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00', '', '', '2024-12-11 13:11:46', '', '', '', '', 'asdio', 'tamas'),
-(25, 'ice', 'ice@gmail.hu', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00', '25_241216122536_XQ2ecFQUYC.png', 'picon.png', '2024-12-11 13:51:56', '', '', 'b', '', '', ''),
-(26, 'a', 'a@a.hu', '0cc175b9c0f1b6a831c399e269772661', '0000-00-00', '26_250123112947_fs3f78GbjO.png', '25_241216122536_XQ2ecFQUYC.png', '2025-01-16 11:21:36', '', '', 'b', '', '', '');
+INSERT INTO `user` (`uid`, `username`, `uemail`, `upassword`, `uprofkepnev`, `uprofkepnev_eredetinev`, `udatum`, `uip`, `usession`, `ustatusz`, `ukomment`) VALUES
+(12, 'asdasds', 'asd@asd.com', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', '12_241024113458_7hsfu8xp3t.png', 'randomkep.png', '2024-10-14 11:51:01', '', '', 'a', 'rakÃ¡s bÃ©nasÃ¡g'),
+(14, 'asdasdsadas', 'asd@asd.com', '7815696ecbf1c96e6894b779456d330e', '14_241014143939_hdhcabvjb0.png', 'randomkep.png', '2024-10-14 14:37:17', '', '', 'a', ''),
+(15, 'asdasd12', 'asd@asd.com', 'bbba0cdac12dbd5917cc24cc90d4b23a', '15_241014144650_bkzj371vzd.png', 'randomkep.png', '2024-10-14 14:41:27', '', '', 'a', ''),
+(16, 'asd', 'asd@asd.com', 'b23cf2d0fb74b0ffa0cf4c70e6e04926', '', '', '2024-10-21 11:54:09', '', '', 'c', ''),
+(17, 'asdasd12', 'asd@asd.com', '52b0c5448cacc00a8df06267afeffd0d', '', '', '2024-10-21 12:23:59', '', '', 'a', ''),
+(18, 'aaa', 'asd@asd.com', 'aaa1', '', '', '2024-11-04 12:42:43', '', '', 'a', ''),
+(19, 'asdadsdsdsdsdsdsdsdsdsdd', 'asd@asd.com', 'aaa123', '19_241104143109_9is383lq2x.jpg', 'alapprofilkep.jfif', '2024-11-04 13:09:01', '', '', 'c', ''),
+(20, 'lacika1234567', 'asd@asd.com', 'aaa123', '', '', '2024-11-04 13:10:37', '', '', 'a', ''),
+(21, 'iceee', 'icehfh@gmail.hu', '123456', '', '', '2024-12-02 12:10:01', '', '', 'a', ''),
+(22, 'fgh', 'fgh@asd.hu', '123456', '', '', '2024-12-02 14:28:32', '', '', 'c', ''),
+(24, 'iced', 'iced@g.hu', 'e10adc3949ba59abbe56e057f20f883e', '', '', '2024-12-11 13:11:46', '', '', 'a', ''),
+(25, 'ice', 'ice@gmail.hu', 'e10adc3949ba59abbe56e057f20f883e', '25_241216122536_XQ2ecFQUYC.png', 'picon.png', '2024-12-11 13:51:56', '', '', 'b', ''),
+(26, 'a', 'a@a.hu', '0cc175b9c0f1b6a831c399e269772661', '26_250123112947_fs3f78GbjO.png', '25_241216122536_XQ2ecFQUYC.png', '2025-01-16 11:21:36', '', '', 'b', '');
 
 -- --------------------------------------------------------
 
@@ -2996,9 +3185,9 @@ CREATE TABLE `vasarlas` (
   `nev` varchar(40) COLLATE utf8_hungarian_ci NOT NULL,
   `cardnumber` varchar(40) COLLATE utf8_hungarian_ci NOT NULL,
   `ldatum` varchar(40) COLLATE utf8_hungarian_ci NOT NULL,
-  `cvv` int(11) NOT NULL,
+  `cvv` varchar(3) COLLATE utf8_hungarian_ci NOT NULL,
   `statusz` int(11) NOT NULL,
-  `datum` datetime NOT NULL DEFAULT current_timestamp()
+  `datum` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
@@ -3006,7 +3195,16 @@ CREATE TABLE `vasarlas` (
 --
 
 INSERT INTO `vasarlas` (`vid`, `koid`, `nev`, `cardnumber`, `ldatum`, `cvv`, `statusz`, `datum`) VALUES
-(1, 10, 'nagy lajos', '25252525-25252525', '02/26', 654, 1, '2025-02-25 00:00:00');
+(1, 10, 'nagy lajos', '25252525-25252525', '02/26', '654', 1, '2025-02-25 00:00:00'),
+(2, 9, 'lajos', '658402', '06/25', '123', 1, '2025-02-25 00:00:00'),
+(3, 4, 'a', '123', '123', '123', 1, '0000-00-00 00:00:00'),
+(4, 3, 'a', '123', '123', '123', 1, '0000-00-00 00:00:00'),
+(5, 4, 'a', '123', '123', '123', 1, '0000-00-00 00:00:00'),
+(6, 3, 'a', '123', '123', '123', 1, '0000-00-00 00:00:00'),
+(7, 4, 'zuo', '123', '123', '526', 1, '2025-02-25 16:03:43'),
+(8, 3, 'zuo', '123', '123', '526', 1, '2025-02-25 16:03:43'),
+(9, 4, 'a', 'a', 'a', 'a', 1, '2025-02-25 16:07:06'),
+(10, 3, 'a', 'a', 'a', 'a', 1, '2025-02-25 16:07:06');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -3049,6 +3247,12 @@ ALTER TABLE `naplo`
   ADD PRIMARY KEY (`nid`);
 
 --
+-- A tábla indexei `support`
+--
+ALTER TABLE `support`
+  ADD PRIMARY KEY (`supportid`);
+
+--
 -- A tábla indexei `user`
 --
 ALTER TABLE `user`
@@ -3080,13 +3284,13 @@ ALTER TABLE `klista`
 -- AUTO_INCREMENT a táblához `konyvek`
 --
 ALTER TABLE `konyvek`
-  MODIFY `konyvid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `konyvid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `kosar`
 --
 ALTER TABLE `kosar`
-  MODIFY `koid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `koid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT a táblához `login`
@@ -3098,7 +3302,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT a táblához `naplo`
 --
 ALTER TABLE `naplo`
-  MODIFY `nid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2692;
+  MODIFY `nid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2852;
+
+--
+-- AUTO_INCREMENT a táblához `support`
+--
+ALTER TABLE `support`
+  MODIFY `supportid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `user`
@@ -3110,7 +3320,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT a táblához `vasarlas`
 --
 ALTER TABLE `vasarlas`
-  MODIFY `vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

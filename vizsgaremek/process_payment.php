@@ -5,7 +5,7 @@ if ($_POST['name'] == "") {
     die("<script> alert('Nem adtad meg a neved!') </script>");
 }
 
-if ($_POST['cardnumber'] == "") {
+if ($_POST['card_number'] == "") {
     die("<script> alert('Nem adtad meg az kártyaszámod!') </script>");
 }
 
@@ -24,27 +24,16 @@ $konyvek = mysqli_query($adb, "SELECT * FROM kosar WHERE uid = '$uid' AND status
 
 if (mysqli_num_rows($konyvek) > 0) {
     while ($konyv = mysqli_fetch_array($konyvek, MYSQLI_ASSOC)) {
-        $name = mysqli_real_escape_string($adb, $_POST['name']);
-        $cardnumber = mysqli_real_escape_string($adb, $_POST['cardnumber']);
-        $expiry = mysqli_real_escape_string($adb, $_POST['expiry']);
-        $cvv = mysqli_real_escape_string($adb, $_POST['cvv']);
-        $kid = mysqli_real_escape_string($adb, $konyv['kid']);
-        $time = date('Y-m-d H:i:s');
+        mysqli_query($adb, "INSERT INTO `vasarlas`(`vid`, `koid`, `nev`, `cardnumber`, `ldatum`, `cvv`, `statusz`, `datum`) 
+        VALUES (null, '{$konyv['koid']}', '{$_POST['name']}', '{$_POST['card_number']}', '{$_POST['expiry']}', '{$_POST['cvv']}', 1, NULL)");
 
-        $query = "INSERT INTO `vasarlas`(`vid`, `koid`, `nev`, `cardnumber`, `ldatum`, `cvv`, `statusz`, `datum`) 
-          VALUES (NULL, '$kid', '$name', '$cardnumber', '$expiry', '$cvv', 1, '$time')";
-
-        if (!mysqli_query($adb, $query)) {
-            die("Query failed: " . mysqli_error($adb));
-        }
-
-        $query1 = "UPDATE kosar SET `statusz`= 0 WHERE uid = ? AND koid = ? AND statusz = 1 LIMIT 1";  
-        $stmt1 = mysqli_prepare($adb, $query1);
-        mysqli_stmt_bind_param($stmt1, "is", $uid, $konyv['koid']);
-        mysqli_stmt_execute($stmt1);
+        $query = "UPDATE kosar SET `statusz`= 0 WHERE uid = ? AND koid = ? AND statusz = 1 LIMIT 1";
+        $stmt = mysqli_prepare($adb, $query);
+        mysqli_stmt_bind_param($stmt, "is", $uid, $konyv['koid']);
+        mysqli_stmt_execute($stmt);
     }
-    print "<script> alert('Sikeres vásárlás!') </script>";
-    print "<script> parent.location.href = './?p=konyvek' </script>" ;
+    //print "<script> alert('Sikeres vásárlás!') </script>";
+    //print "<script> parent.location.href = './?p=konyvek' </script>" ;
 } else {
     die("<script> alert('Üres a kosár!') </script>");
 }
