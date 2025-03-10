@@ -100,9 +100,7 @@
             margin-right: 10px;
         }
 
-        iframe {
-            display: none;
-        }
+
     </style>
 </head>
 <body>
@@ -123,8 +121,7 @@
             Beleegyezek a feltételekbe
         </label>
 
-        <input type="submit" value="Regisztráció" onclick="location.href='login_form.php'" >
+        <input type="submit" value="Regisztráció">
     </form>
-    <iframe name="kisablak"></iframe>
 </body>
 </html>

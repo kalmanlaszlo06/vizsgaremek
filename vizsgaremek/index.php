@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Bookli</title>
+    <title>Bookly</title>
 </head>
 <body>
 <style>
@@ -225,8 +225,7 @@
 ?>
 <iframe name="kisablak"></iframe>
 <footer>
-    <p>&copy; 2024 Bookli.hu Minden jog fenntartva. Hogy hivják a kínai könyvmolyt. Bookli! </p>
-    <?php var_dump($_SESSION['uid']);?>
+    <p>&copy; 2024 Bookly.hu Minden jog fenntartva. Hogy hivják a kínai könyvmolyt. Bookly! </p>
 </footer>
 </body>
 </html>

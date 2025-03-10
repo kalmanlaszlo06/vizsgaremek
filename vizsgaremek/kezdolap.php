@@ -35,10 +35,10 @@
     }
 </style>
 <div id="tartalom">
-    <h1>Bookli</h1>
+    <h1>Bookly</h1>
     <h4>Álmaid könyvtára</h4>
     <hr>
-    <p>A Bookli egy online könyvtár ami úttörő ötletekel újitja meg a elavult könyvtári rendszereket és hatalmas tárházával nyujt elképzelhetetlen élményeket</p>
+    <p>A Bookly egy online könyvtár ami úttörő ötletekel újitja meg a elavult könyvtári rendszereket és hatalmas tárházával nyujt elképzelhetetlen élményeket</p>
     <br><br><br>
     <?php
         echo "<input type='button' value='kezdés' onclick='location.href=\"./?p=login\"'>";
